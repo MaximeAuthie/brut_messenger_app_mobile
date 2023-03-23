@@ -34,11 +34,11 @@ const routes: Array<RouteRecordRaw> = [
   //   name: 'UserProfile',
   //   component: UserProfile
   // },
-  // {
-  //   path: '/settings',
-  //   name: 'Settings',
-  //   component: Settings
-  // },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings
+  },
   {
     path: '/sign-in',
     name: 'SignIn',
