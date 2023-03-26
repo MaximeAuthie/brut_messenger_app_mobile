@@ -7,7 +7,7 @@ import ContactsList from '../components/ContactsListComponent.vue';
 import UserProfile from '../components/UserProfileComponent.vue';
 import Settings from '../components/SettingsComponent.vue';
 import SignIn from '../components/SignInComponent.vue'
-
+import ContactView from '../components/ContactComponent.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -29,11 +29,11 @@ const routes: Array<RouteRecordRaw> = [
   //   name: 'ContactsList',
   //   component: ContactsList
   // },
-  // {
-  //   path: '/user-profile',
-  //   name: 'UserProfile',
-  //   component: UserProfile
-  // },
+  {
+    path: '/user-profile',
+    name: 'UserProfile',
+    component: UserProfile
+  },
   {
     path: '/settings',
     name: 'Settings',
@@ -44,7 +44,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'SignIn',
     component: SignIn
   },
-
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: ContactView
+  },
   
 ]
 

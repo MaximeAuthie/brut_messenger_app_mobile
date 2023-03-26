@@ -74,9 +74,49 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** brutRed **/
+  --ion-color-brutRed: #F55A4F;
+  --ion-color-brutRed-rgb: 245, 90, 79;
+  --ion-color-brutRed-contrast: #ffffff;
+  --ion-color-brutRed-contrast-rgb: 255, 255, 255;
+  --ion-color-brutRed-shade: #f23426;
+  --ion-color-brutRed-tint: #f7776e;
+
+  /** brutGreen **/
+  --ion-color-brutGreen: #23A093;
+  --ion-color-brutGreen-rgb: 35, 160, 147;
+  --ion-color-brutGreen-contrast: #ffffff;
+  --ion-color-brutGreen-contrast-rgb: 255, 255, 255;
+  --ion-color-brutGreen-shade: #1c7d74;
+  --ion-color-brutGreen-tint: #29bcae;
+
+  /** brutBlue **/
+  --ion-color-brutBlue: #6B9BFA;
+  --ion-color-brutBlue-rgb: 35, 160, 147;
+  --ion-color-brutBlue-contrast: #ffffff;
+  --ion-color-brutBlue-contrast-rgb: 255, 255, 255;
+  --ion-color-brutBlue-shade: #3a79f8;
+  --ion-color-brutBlue-tint: #9dbcfb;
+
+  /** brutYellow **/
+  --ion-color-brutYellow: #FCA311;
+  --ion-color-brutYellow-rgb: 35, 160, 147;
+  --ion-color-brutYellow-contrast: #ffffff;
+  --ion-color-brutYellow-contrast-rgb: 255, 255, 255;
+  --ion-color-brutYellow-shade: #fdb035;
+  --ion-color-brutYellow-tint: #e38d02;
+
+  /** brutLight **/
+  --ion-color-brutLight: #FFFEF8;
+  --ion-color-brutLight-rgb: 35, 160, 147;
+  --ion-color-brutLight-contrast: #ffffff;
+  --ion-color-brutLight-contrast-rgb: 255, 255, 255;
+  --ion-color-brutLight-shade: #fffbe6;
+  --ion-color-brutLight-tint: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------
