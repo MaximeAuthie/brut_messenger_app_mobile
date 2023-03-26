@@ -1,42 +1,31 @@
 <template>
     <ion-content :fullscreen="true">
 
-        <h1 class="title">Réglages généraux</h1>
+        <h1 class="title">Cécilia Orsi</h1>
  
         <ion-avatar class="custom">
-            <img src="../../public/assets/logo/LOGO_ROUND_RED.png" alt="">
+            <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
-            <ion-label position="fixed">Taille des polices :</ion-label>
+            <ion-label position="fixed">Prénom</ion-label>
+            <ion-input class="custom" type="text" name="firstName"></ion-input>
 
-            <ion-list>
-                <ion-radio-group value="strawberries">
-                <ion-item>
-                    <ion-label>Grapes</ion-label>
-                    <ion-radio slot="end" value="grapes"></ion-radio>
-                </ion-item>
+            <ion-label position="fixed">Nom</ion-label>
+            <ion-input class="custom" type="text" name="lastName"></ion-input>
 
-                <ion-item>
-                    <ion-label>Strawberries</ion-label>
-                    <ion-radio slot="end" value="strawberries"></ion-radio>
-                </ion-item>
+            <ion-label position="fixed">Surnom</ion-label>
+            <ion-input class="custom" type="text" name="nickName"></ion-input>
+        
+            <ion-label position="fixed">Adresse mail</ion-label>
+            <ion-input class="custom" type="email" name="mail"></ion-input>
 
-                <ion-item>
-                    <ion-label>Pineapple</ion-label>
-                    <ion-radio slot="end" value="pineapple"></ion-radio>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label>Cherries (Disabled)</ion-label>
-                    <ion-radio slot="end" value="cherries" :disabled="true"></ion-radio>
-                </ion-item>
-                </ion-radio-group>
-            </ion-list>
+            <ion-label position="fixed">Anniversaire</ion-label>
+            <ion-input class="custom" type="date" name="birthday"></ion-input>
 
             <div class="button">
                 <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                <ion-button class="custom accessory" expand="block">Bloquer</ion-button>
             </div>
 
         </div>
@@ -44,18 +33,18 @@
   </template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonItem, IonLabel, IonRadioGroup, IonRadio, IonList } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput, IonButtons } from '@ionic/vue';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
         name: 'settings-component',
-        components: { IonContent, IonLabel, IonAvatar, IonRadio, IonRadioGroup, IonButton, IonItem, IonList},
+        components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton},
     }); 
 </script>
 
-<style scoped>
+<style>
     ion-content {
-        --ion-background-color: var(--ion-color-brutBlue);
+        --ion-background-color: var(--ion-color-brutRed);
         padding: 10%;
     }
 
@@ -87,7 +76,15 @@
         line-height: 0px;
     }
 
-    
+    ion-input.custom {
+        --background: var(--ion-color-brutLight);
+        height: 40px;
+        border: 4px solid black;
+        box-shadow: 7px 7px 0px black;
+        margin-bottom: 1.5vh;
+        font-size: 1.2em;
+        color: black;
+    }
 
     .button {
         display: flex;
