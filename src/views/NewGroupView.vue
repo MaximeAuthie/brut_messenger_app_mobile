@@ -1,60 +1,85 @@
 <template>
     <ion-content :fullscreen="true">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2">
+                    <router-link to="/conversation-list">
+                        <ion-icon :icon="chevronBackOutline" size="large"></ion-icon>
+                    </router-link>
+                    
+                </ion-col>
+                <ion-col size="10">
+                    <h1 class="title">Nouveau groupe</h1>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-        <h1 class="title">Cécilia Orsi</h1>
- 
         <ion-avatar class="custom">
             <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
-            <ion-label position="fixed">Prénom</ion-label>
+            <ion-label position="fixed">Nom du groupe : </ion-label>
             <ion-input class="custom" type="text" name="firstName"></ion-input>
-
-            <ion-label position="fixed">Nom</ion-label>
-            <ion-input class="custom" type="text" name="lastName"></ion-input>
-
-            <ion-label position="fixed">Surnom</ion-label>
-            <ion-input class="custom" type="text" name="nickName"></ion-input>
-        
-            <ion-label position="fixed">Adresse mail</ion-label>
-            <ion-input class="custom" type="email" name="mail"></ion-input>
-
-            <ion-label position="fixed">Anniversaire</ion-label>
-            <ion-input class="custom" type="date" name="birthday"></ion-input>
+            <br>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="10">
+                        <ion-label position="fixed">Membres du groupe : </ion-label>
+                    </ion-col>
+                    <ion-col size="2">
+                        <router-link to="/conversation-list">
+                            <ion-icon :icon="addOutline" size="large"></ion-icon>
+                        </router-link>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
 
             <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Bloquer</ion-button>
+                <ion-button class="custom main" expand="block">Créer</ion-button>
             </div>
-
         </div>
     </ion-content>
   </template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput, IonButtons } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonIcon, IonGrid, IonRow, IonCol, IonInput } from '@ionic/vue';
+    import { chevronBackOutline, addOutline } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
         name: 'settings-component',
-        components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton},
+        components: { IonContent, IonLabel, IonAvatar, IonButton, IonIcon, IonGrid, IonRow, IonCol, IonInput },
+        setup() {
+            return { chevronBackOutline, addOutline };
+        },
     }); 
 </script>
 
-<style>
+<style scoped>
     ion-content {
-        --ion-background-color: var(--ion-color-brutRed);
+        --ion-background-color: var(--ion-color-brutGreen);
         padding: 10%;
+    }
+
+    ion-grid {
+        line-height: 30px;
+        width: 100%;
+    }
+
+    ion-icon{
+        color: #000000;
     }
 
     .title {
         color: #000000;
+        line-height: 0px;
         text-align: center;
         font-family: BUNGEE;
-        font-size: 2.2em;
+        font-size: 1.7em;
     }
 
+    
     ion-avatar.custom {
         width:150px;
         height: 150px;
@@ -116,14 +141,6 @@
         --background-activated: #88f4be;
         --background-focused: #88f4be;
         --color: #FFFFFF;
-    }
-
-    ion-button.accessory {
-        --background: var(--ion-color-brutLight);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #000000;
     }
 
     .errorMsg {

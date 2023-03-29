@@ -1,48 +1,53 @@
 <template>
-    <ion-content :fullscreen="true" class="flex">
-
+    <ion-content :fullscreen="true">
+        <h1 class="title">Réglages généraux</h1>
+ 
         <ion-avatar class="custom">
-            <img src="../../public/assets/logo/LOGO_ROUND_YELLOW.png" alt="">
+            <img src="../../public/assets/logo/LOGO_ROUND_RED.png" alt="">
+        </ion-avatar>
+            
+            
+       
+        <ion-avatar class="custom">
+            <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
-            <ion-label position="fixed">Identifiant</ion-label>
+            <ion-label position="fixed">Nom du groupe : </ion-label>
             <ion-input class="custom" type="text" name="firstName"></ion-input>
-
-            <ion-label position="fixed">Mot de passe</ion-label>
-            <ion-input class="custom" type="password" name="password1"></ion-input>
+            <br>
+            <ion-label position="fixed">Membres du groupe :</ion-label>
 
             <div class="button">
-                <ion-button class="custom main" expand="block">Connexion</ion-button>
-                <ion-button class="custom accessory" expand="block">Mot de passe oublié</ion-button>
+                <ion-button class="custom main" expand="block">Créer</ion-button>
             </div>
 
-            <ion-text color="light">
-                <p>Pas encore inscrit? <a href="http://localhost:8081/register" >Clique ici</a> pour accéder au formulaire d'inscription.</p>
-            </ion-text>
-
         </div>
-       
-
     </ion-content>
-</template>
+  </template>
 
 <script lang="ts">
-    import { IonContent, IonText, IonAvatar, IonButton, IonLabel, IonInput, IonButtons   } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput } from '@ionic/vue';
+    import { chevronBackOutline } from 'ionicons/icons'
     import { defineComponent } from 'vue';
 
     export default defineComponent({
         name: 'settings-component',
-        components: { IonContent, IonInput, IonLabel, IonAvatar, IonText, IonButton},
+        components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton },
+        
     }); 
+
 </script>
 
-<style>
+<style scoped>
     ion-content {
         --ion-background-color: var(--ion-color-brutGreen);
         padding: 10%;
     }
+    .header {
+        display: flex;
 
+    }
     .title {
         color: #000000;
         text-align: center;
@@ -53,8 +58,7 @@
     ion-avatar.custom {
         width:150px;
         height: 150px;
-        margin-top: 10vh;
-        margin-bottom: 5vh;
+        margin-top: 2vh;
         margin-left: auto;
         margin-right: auto;
         border: solid black 5px;
@@ -87,7 +91,7 @@
         flex-direction: column;
         align-content: flex-start;
         height: 17vh;
-        margin-top: 5vh;
+        margin-top: 2vh;
         padding-left: 5%;
         padding-right: 5%;
     }
@@ -114,14 +118,6 @@
         --color: #FFFFFF;
     }
 
-    ion-button.accessory {
-        --background: var(--ion-color-brutLight);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #000000;
-    }
-
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
@@ -132,17 +128,5 @@
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
-    }
-
-    ion-text p {
-        text-align: center;
-        font-family: 'Dongle', sans-serif;
-        font-size: 1.8em;
-        line-height: 25px;
-        margin-top: 10vh;
-    }
-
-    ion-text a:visited {
-        color: var(--ion-color-light);
     }
 </style>
