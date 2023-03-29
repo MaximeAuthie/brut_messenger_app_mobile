@@ -4,7 +4,7 @@
             <ion-row>
                 <ion-col size="2">
                     <router-link to="/conversation-list">
-                        <ion-icon :icon="chevronBackOutline" size="large"></ion-icon>
+                        <router-link to="/conversation-list"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations"></router-link>
                     </router-link>
                     
                 </ion-col>
@@ -70,6 +70,9 @@
     ion-icon{
         color: #000000;
     }
+    .return {
+        padding-top: 2.5vh;
+    }
 
     .title {
         color: #000000;
@@ -77,8 +80,9 @@
         text-align: center;
         font-family: BUNGEE;
         font-size: 1.7em;
+        line-height: 3.5vh;
+        padding-top: 1.5vh;
     }
-
     
     ion-avatar.custom {
         width:150px;
@@ -103,6 +107,7 @@
 
     ion-input.custom {
         --background: var(--ion-color-brutLight);
+        --padding-start:1vw;
         height: 40px;
         border: 4px solid black;
         box-shadow: 7px 7px 0px black;

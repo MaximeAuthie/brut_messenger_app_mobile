@@ -1,31 +1,26 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import HomePage from '../views/HomePage.vue';
-import FormPage from '../views/FormPage.vue';
-import ConversationList from '../views/ConversationListComponent.vue';
+import ConversationListView from '../views/ConversationListView.vue';
 import ContactsListView from '../views/ContactsListView.vue';
 import UserProfileView from '../views/UserProfileView.vue';
 import GeneralSettingsView from '../views/GeneralSettingsView.vue';
-import SignInView from '../views/SignInView.vue'
-import ContactView from '../views/ContactView.vue'
-import NewGroupView from '../views/NewGroupView.vue'
+import SignInView from '../views/SignInView.vue';
+import ContactView from '../views/ContactView.vue';
+import NewGroupView from '../views/NewGroupView.vue';
+import NewConversationView from '../views/NewConversationView.vue';
+import GroupInvitationView from '../views/GroupInvitationView.vue';
+import ConversationSettingsView from '../views/ConversationSettingsView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/home'
   },
-  // {
-  //   path: '/home',
-  //   name: 'Home',
-  //   component: HomePage
-  // },
-
-  // {
-  //   path: '/conversation-list',
-  //   name: 'ConversationList',
-  //   component: ConversationList
-  // },
+  {
+    path: '/conversation-list',
+    name: 'ConversationList',
+    component: ConversationListView
+  },
   {
     path: '/contacts-list',
     name: 'ContactsList',
@@ -37,8 +32,8 @@ const routes: Array<RouteRecordRaw> = [
     component: UserProfileView
   },
   {
-    path: '/settings',
-    name: 'Settings',
+    path: '/general-settings',
+    name: 'GeneralSettings',
     component: GeneralSettingsView
   },
   {
@@ -52,11 +47,27 @@ const routes: Array<RouteRecordRaw> = [
     component: ContactView
   },
   {
-    path: '/new_group',
+    path: '/new-group',
     name: 'NewGroup',
     component: NewGroupView
   },
-  
+  {
+    path: '/new-conversation',
+    name: 'NewConversation',
+    component: NewConversationView
+  },
+  {
+    path: '/group-invitation',
+    name: 'GroupInvitation',
+    component: GroupInvitationView
+  },
+  {
+    path: '/conversation-settings',
+    name: 'ConversationSettings',
+    component: ConversationSettingsView
+  },
+
+
 ]
 
 const router = createRouter({

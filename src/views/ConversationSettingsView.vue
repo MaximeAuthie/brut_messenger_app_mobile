@@ -4,72 +4,82 @@
             <ion-row>
                 <ion-col size="2">
                     <router-link to="/conversation-list">
-                        <router-link to="/contacts-list"><img src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à l'accueil du site" title="Retour à l'accueil du site"></router-link>
+                        <router-link to="/conversation-list"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations"></router-link>
                     </router-link>
+                    
                 </ion-col>
                 <ion-col size="10">
-                    <h1 class="title">Cécilia Orsi</h1>
+                    <h1 class="title">Réglages conversation</h1>
                 </ion-col>
             </ion-row>
         </ion-grid>
-        
-        
+
         <ion-avatar class="custom">
             <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
-            <ion-label position="fixed">Prénom</ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
-
-            <ion-label position="fixed">Nom</ion-label>
-            <ion-input class="custom" type="text" name="lastName"></ion-input>
-
-            <ion-label position="fixed">Surnom</ion-label>
-            <ion-input class="custom" type="text" name="nickName"></ion-input>
-        
-            <ion-label position="fixed">Adresse mail</ion-label>
-            <ion-input class="custom" type="email" name="mail"></ion-input>
-
-            <ion-label position="fixed">Anniversaire</ion-label>
-            <ion-input class="custom" type="date" name="birthday"></ion-input>
-
-
+            <ion-label position="fixed">Surnom de l'interlocuteur</ion-label>
+            <ion-input class="custom" type="email" name="contact-email"></ion-input>
+            <ion-label position="fixed">Couleur de mes messages</ion-label>
+            <ion-select placeholder="Choisissez une couleur">
+                <ion-select-option value="red">Rouge</ion-select-option>
+                <ion-select-option value="green">Vert</ion-select-option>
+                <ion-select-option value="yellow">Jaune</ion-select-option>
+                <ion-select-option value="blue">Bleu</ion-select-option>
+            </ion-select>
+            <ion-label position="fixed">Couleur des autre messages</ion-label>
+            <ion-select placeholder="Choisissez une couleur">
+                <ion-select-option value="red">Rouge</ion-select-option>
+                <ion-select-option value="green">Vert</ion-select-option>
+                <ion-select-option value="yellow">Jaune</ion-select-option>
+                <ion-select-option value="blue">Bleu</ion-select-option>
+            </ion-select>
             <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                <ion-button class="custom main" expand="block">Envoyer</ion-button>
             </div>
-
         </div>
     </ion-content>
   </template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput, IonGrid, IonRow, IonCol } from '@ionic/vue';
-    
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/vue';
+    import { chevronBackOutline, addOutline } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
-        name: 'settings-component',
-        components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol },
-        
+        components: { IonContent, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol, IonInput, IonItem, IonList, IonSelect, IonSelectOption },
+        setup() {
+            return { chevronBackOutline, addOutline };
+        },
     }); 
-
 </script>
 
 <style scoped>
     ion-content {
-        --ion-background-color: var(--ion-color-brutBlue);
+        --ion-background-color: var(--ion-color-brutGreen);
         padding: 10%;
     }
-    .title {
-        color: #000000;
-        text-align: center;
-        font-family: BUNGEE;
-        font-size: 2.2em;
-        line-height: 1.5vh;
+
+    ion-grid {
+        line-height: 30px;
+        width: 100%;
     }
 
+    .return {
+        padding-top: 2.5vh;
+    }
+
+    .title {
+        color: #000000;
+        line-height: 0px;
+        text-align: center;
+        font-family: BUNGEE;
+        font-size: 1.7em;
+        line-height: 3.5vh;
+    }
+
+    
     ion-avatar.custom {
         width:150px;
         height: 150px;
@@ -102,6 +112,18 @@
         color: black;
     }
 
+    ion-select {
+        background-color: var(--ion-color-brutLight);
+        --padding-start:1vw;
+        width: 100%;
+        height: 40px;
+        border: 4px solid black;
+        box-shadow: 7px 7px 0px black;
+        margin-bottom: 1.5vh;
+        font-size: 1.2em;
+        color: black;
+    }
+
     .button {
         display: flex;
         flex-direction: column;
@@ -122,7 +144,7 @@
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
-        margin-top: 1vh;
+        margin-top: 7vh;
         font-weight: normal;
     }
 
@@ -132,13 +154,6 @@
         --background-activated: #88f4be;
         --background-focused: #88f4be;
         --color: #FFFFFF;
-    }
-    ion-button.accessory {
-        --background: var(--ion-color-brutLight);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #000000;
     }
 
     .errorMsg {
