@@ -10,6 +10,9 @@ import NewGroupView from '../views/NewGroupView.vue';
 import NewConversationView from '../views/NewConversationView.vue';
 import GroupInvitationView from '../views/GroupInvitationView.vue';
 import ConversationSettingsView from '../views/ConversationSettingsView.vue';
+import GroupSettingsView from '../views/GroupSettingsView.vue';
+import MemberSettingsView from '../views/MemberSettingsView.vue';
+import DeleteAccountView from '../views/DeleteAccountView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -66,8 +69,21 @@ const routes: Array<RouteRecordRaw> = [
     name: 'ConversationSettings',
     component: ConversationSettingsView
   },
-
-
+  {
+    path: '/group-settings',
+    name: 'GroupSettings',
+    component: GroupSettingsView
+  },
+  {
+    path: '/member-settings',
+    name: 'MemberSettings',
+    component: MemberSettingsView
+  },
+  {
+    path: '/delete-account',
+    name: 'DeleteAccount',
+    component: DeleteAccountView
+  },
 ]
 
 const router = createRouter({
