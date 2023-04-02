@@ -1,29 +1,18 @@
 <template>
     <ion-content :fullscreen="true">
-        <ion-grid>
-            <ion-row>
-                <ion-col size="2">
-                    <router-link to="/conversation-list">
-                        <router-link to="/contacts-list"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à l'accueil du site" title="Retour à l'accueil du site"></router-link>
-                    </router-link>
-                </ion-col>
-                <ion-col size="10">
-                    <h1 class="title">Supprimer mon compte</h1>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+        <h1 class="title">Supprimer mon compte</h1>
 
         <img class="warning" src="../../public/assets/logo/WARNING.png" alt="Attention">
        
         <div class="form">
             <p>La suppression de votre compte implique que tout vos messages et vos contacts soient supprimés.</p>
-            <br>
             <p>Etes-vous sûr de vouloir supprimer votre compte?</p>
 
-
             <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                <ion-button class="custom main" expand="block">Confirmer</ion-button>
+                <router-link to="/general-settings" class="no-underline">
+                    <ion-button class="custom accessory" expand="block">Annuler</ion-button>
+                </router-link>
             </div>
 
         </div>
@@ -31,13 +20,13 @@
   </template>
 
 <script lang="ts">
-    import { IonContent, IonButton, IonGrid, IonRow, IonCol } from '@ionic/vue';
+    import { IonContent, IonButton } from '@ionic/vue';
     
     import { defineComponent } from 'vue';
 
     export default defineComponent({
         name: 'settings-component',
-        components: { IonContent, IonButton, IonGrid, IonRow, IonCol },
+        components: { IonContent, IonButton },
         
     }); 
 
@@ -65,8 +54,8 @@
     .warning {
         margin-top: 2vh;
         display: block;
-        width: 220px;
-        height: 20=50px;
+        width: 200px;
+        height: 200px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -81,17 +70,6 @@
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
         line-height: 25px;
-    }
-
-    ion-input.custom {
-        --background: var(--ion-color-brutLight);
-        --padding-start:1vw;
-        height: 40px;
-        border: 4px solid black;
-        box-shadow: 7px 7px 0px black;
-        margin-bottom: 1.5vh;
-        font-size: 1.2em;
-        color: black;
     }
 
     .button {
@@ -132,7 +110,6 @@
         --background-focused: #88f4be;
         --color: #000000;
     }
-
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
@@ -144,4 +121,7 @@
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
     }
+    .no-underline {
+        text-decoration: none;
+    }   
 </style>
