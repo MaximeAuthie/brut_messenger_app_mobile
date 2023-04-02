@@ -1,51 +1,58 @@
 <template>
-    <ion-content :fullscreen="true">
+    <ion-app>
+        <ion-content :fullscreen="true">
 
-        <h1 class="title">Réglages généraux</h1>
- 
-        <ion-avatar class="custom">
-            <img src="../../public/assets/logo/LOGO_ROUND_RED.png" alt="">
-        </ion-avatar>
+            <h1 class="title">Réglages généraux</h1>
+    
+            <ion-avatar class="custom">
+                <img src="../../public/assets/logo/LOGO_ROUND_RED.png" alt="">
+            </ion-avatar>
 
-        <div class="form">
-            <ion-label position="fixed">Taille des polices :</ion-label>
+            <div class="form">
+                <ion-label position="fixed">Taille des polices :</ion-label>
 
-            <ion-list>
-                <ion-radio-group value="strawberries">
-                <ion-item lines="none">
-                    <ion-label>Petites</ion-label>
-                    <ion-radio color="dark" slot="end" value="small"></ion-radio>
-                </ion-item>
+                <ion-list>
+                    <ion-radio-group value="strawberries">
+                    <ion-item lines="none">
+                        <ion-label>Petites</ion-label>
+                        <ion-radio color="dark" slot="end" value="small"></ion-radio>
+                    </ion-item>
 
-                <ion-item lines="none">
-                    <ion-label>Moyennes</ion-label>
-                    <ion-radio color="dark" slot="end" value="medium"></ion-radio>
-                </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>Moyennes</ion-label>
+                        <ion-radio color="dark" slot="end" value="medium"></ion-radio>
+                    </ion-item>
 
-                <ion-item lines="none">
-                    <ion-label>Grandes</ion-label>
-                    <ion-radio color="dark" slot="end" value="big"></ion-radio>
-                </ion-item>
+                    <ion-item lines="none">
+                        <ion-label>Grandes</ion-label>
+                        <ion-radio color="dark" slot="end" value="big"></ion-radio>
+                    </ion-item>
+                    </ion-radio-group>
+                </ion-list>
 
-                </ion-radio-group>
-            </ion-list>
+                <div class="button">
+                    <ion-button class="custom main" expand="block">Enregistrer</ion-button>
+                    <router-link to="/delete-account" class="no-underline">
+                        <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                    </router-link>
+                </div>
 
-            <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
             </div>
-
-        </div>
-    </ion-content>
-  </template>
+        </ion-content>
+        <ion-footer>
+                <nav-bar></nav-bar>
+        </ion-footer>
+    </ion-app>
+</template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonItem, IonLabel, IonRadioGroup, IonRadio, IonList } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonItem, IonLabel, IonRadioGroup, IonRadio, IonList, IonFooter } from '@ionic/vue';
     import { defineComponent } from 'vue';
 
+    import NavBar from '../components/NavBarComponent.vue';
+
     export default defineComponent({
-        name: 'settings-component',
-        components: { IonContent, IonLabel, IonAvatar, IonRadio, IonRadioGroup, IonButton, IonItem, IonList },
+        components: { 'nav-bar': NavBar, IonContent, IonLabel, IonAvatar, IonRadio, IonRadioGroup, IonButton, IonItem, IonList, IonFooter },
     }); 
 </script>
 
@@ -55,11 +62,17 @@
         padding: 10%;
     }
 
+    .return {
+        padding-top: 2.5vh;
+    }
+
     .title {
         color: #000000;
+        line-height: 0px;
         text-align: center;
         font-family: BUNGEE;
-        font-size: 2.2em;
+        font-size: 1.7em;
+        line-height: 3.5vh;
     }
 
     ion-avatar.custom {
@@ -133,4 +146,8 @@
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
     }
+
+    .no-underline {
+        text-decoration: none;
+    } 
 </style>

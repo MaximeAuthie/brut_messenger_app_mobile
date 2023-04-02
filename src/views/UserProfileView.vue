@@ -1,47 +1,53 @@
 <template>
-    <ion-content :fullscreen="true">
+    <ion-app>
+        <ion-content :fullscreen="true">
 
-        <h1 class="title">Mon profil</h1>
- 
-        <ion-avatar class="custom">
-            <img src="../../public/assets/images/moi.jpg" alt="">
-        </ion-avatar>
+            <h1 class="title">Mon profil</h1>
+    
+            <ion-avatar class="custom">
+                <img src="../../public/assets/images/moi.jpg" alt="">
+            </ion-avatar>
 
-        <div class="form">
-            <ion-label position="fixed">Prénom</ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
+            <div class="form">
+                <ion-label position="fixed">Prénom</ion-label>
+                <ion-input class="custom" type="text" name="firstName"></ion-input>
 
-            <ion-label position="fixed">Nom</ion-label>
-            <ion-input class="custom" type="text" name="lastName"></ion-input>
+                <ion-label position="fixed">Nom</ion-label>
+                <ion-input class="custom" type="text" name="lastName"></ion-input>
 
-            <ion-label position="fixed">Surnom</ion-label>
-            <ion-input class="custom" type="text" name="nickName"></ion-input>
-        
-            <ion-label position="fixed">Adresse mail</ion-label>
-            <ion-input class="custom" type="email" name="mail"></ion-input>
+                <ion-label position="fixed">Surnom</ion-label>
+                <ion-input class="custom" type="text" name="nickName"></ion-input>
+            
+                <ion-label position="fixed">Adresse mail</ion-label>
+                <ion-input class="custom" type="email" name="mail"></ion-input>
 
-            <ion-label position="fixed">Mot de passe</ion-label>
-            <ion-input class="custom" type="password" name="password1"></ion-input>
-        
-            <ion-label position="fixed">Ressaisir le mot de passe</ion-label>
-            <ion-input class="custom" type="password" name="password2"></ion-input>
+                <ion-label position="fixed">Mot de passe</ion-label>
+                <ion-input class="custom" type="password" name="password1"></ion-input>
+            
+                <ion-label position="fixed">Ressaisir le mot de passe</ion-label>
+                <ion-input class="custom" type="password" name="password2"></ion-input>
 
-            <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                <div class="button">
+                    <ion-button class="custom main" expand="block">Enregistrer</ion-button>
+                    <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                </div>
+
             </div>
-
-        </div>
-    </ion-content>
+        </ion-content>
+        <ion-footer>
+                <nav-bar></nav-bar>
+        </ion-footer>
+    </ion-app>
   </template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput, IonButtons } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonInput, IonFooter } from '@ionic/vue';
     import { defineComponent } from 'vue';
 
+    import NavBar from '../components/NavBarComponent.vue';
+
     export default defineComponent({
-        name: 'settings-component',
-        components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton},
+        components: { 'nav-bar': NavBar, IonContent, IonInput, IonLabel, IonAvatar, IonButton, IonFooter},
     }); 
 </script>
 

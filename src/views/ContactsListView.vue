@@ -1,34 +1,104 @@
 <template>
-    <ion-list>
-      <ion-radio-group :allow-empty-selection="true" value="turtles">
-        <ion-item>
-          <ion-label>Dogs</ion-label>
-          <ion-radio slot="end" value="dogs"></ion-radio>
-        </ion-item>
+    <ion-app>
+        <ion-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-avatar class="custom">
+                            <img src="../../public/assets/images/moi.jpg" alt="">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col size="9">
+                        <h1 class="title">Liste des contacts</h1>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-content>
+        <ion-footer>
+            <nav-bar></nav-bar>
+        </ion-footer>
+    </ion-app>
+</template>
   
-        <ion-item>
-          <ion-label>Cats</ion-label>
-          <ion-radio slot="end" value="cats"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Turtles</ion-label>
-          <ion-radio slot="end" value="turtles"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label>Fish</ion-label>
-          <ion-radio slot="end" value="fish"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-  </template>
-  
-  <script lang="ts">
-    import { IonItem, IonLabel, IonList, IonRadio, IonRadioGroup } from '@ionic/vue';
+<script lang="ts">
+    
+    import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter } from '@ionic/vue';
     import { defineComponent } from 'vue';
-  
-    export default defineComponent({
-      components: { IonItem, IonLabel, IonList, IonRadio, IonRadioGroup },
-    });
-  </script>
+
+    import NavBar from '../components/NavBarComponent.vue';
+
+    export default {
+        components: { 'nav-bar': NavBar, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter },
+    }
+</script>
+
+<style scoped>
+ion-content {
+        --ion-background-color: var(--ion-color-brutRed);
+        padding: 10%;
+    }
+    .return {
+        padding-top: 2.5vh;
+    }
+
+    .title {
+        color: #000000;
+        line-height: 0px;
+        text-align: center;
+        font-family: BUNGEE;
+        font-size: 1.7em;
+        line-height: 3.5vh;
+        padding-top: 1.5vh;
+    }
+    
+    ion-col {
+        text-align: center;
+    }
+    ion-avatar.custom {
+        width:90px;
+        height: 90px;
+        margin-top: 2vh;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid black 5px;
+        box-shadow: 7px 7px 0px black;
+    }
+
+    .form {
+        padding: 10%;
+    }
+
+    ion-label {
+        font-size: 2em;
+        font-weight: bold;
+        font-family: 'Dongle', sans-serif;
+    }
+    ion-input.custom {
+        --background: var(--ion-color-brutLight);
+        --padding-start:1vw;
+        height: 40px;
+        border: 4px solid black;
+        box-shadow: 7px 7px 0px black;
+        margin-bottom: 1.5vh;
+        font-size: 1.2em;
+        color: black;
+    }
+    ion-button.accessory {
+        --background: var(--ion-color-brutLight);
+        --background-hover: #9ce0be;
+        --background-activated: #88f4be;
+        --background-focused: #88f4be;
+        --color: #000000;
+    }
+    .errorMsg {
+        color: rgb(255, 0, 0);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+    }
+    .badInput {
+        border: 4px solid #F55A4F;
+        box-shadow: 7px 7px 0px black;
+    }
+</style>
