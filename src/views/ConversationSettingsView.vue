@@ -40,18 +40,18 @@
             </div>
         </div>
     </ion-content>
-  </template>
+</template>
 
 <script lang="ts">
-    import { IonContent, IonAvatar, IonButton, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonButton, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
     import { chevronBackOutline, addOutline } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
-        components: { IonContent, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol, IonInput, IonItem, IonList, IonSelect, IonSelectOption },
+        components: { IonContent, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption },
         setup() {
             return { chevronBackOutline, addOutline };
-        },
+        },  
     }); 
 </script>
 
