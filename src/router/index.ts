@@ -12,7 +12,8 @@ import GroupInvitationView from '../views/GroupInvitationView.vue';
 import ConversationSettingsView from '../views/ConversationSettingsView.vue';
 import GroupSettingsView from '../views/GroupSettingsView.vue';
 import MemberSettingsView from '../views/MemberSettingsView.vue';
-import DeleteAccountView from '../views/DeleteAccountView.vue'
+import DeleteAccountView from '../views/DeleteAccountView.vue';
+import ConversationView from '../views/ConversationView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -83,6 +84,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/delete-account',
     name: 'DeleteAccount',
     component: DeleteAccountView
+  },
+  {
+    path: '/conversation',
+    name: 'Conversation',
+    component: ConversationView
   },
 ]
 
