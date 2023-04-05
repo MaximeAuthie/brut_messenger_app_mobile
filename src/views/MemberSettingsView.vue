@@ -6,7 +6,6 @@
                     <router-link to="/conversation-list">
                         <router-link to="/conversation-list"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations"></router-link>
                     </router-link>
-                    
                 </ion-col>
                 <ion-col size="10">
                     <h1 class="title">Réglages du membre</h1>

@@ -32,9 +32,6 @@
 
                 <div class="button">
                     <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                    <router-link to="/delete-account" class="no-underline">
-                        <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
-                    </router-link>
                 </div>
 
             </div>

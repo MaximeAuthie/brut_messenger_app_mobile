@@ -49,7 +49,6 @@
     import ConversationButton from '../components/ConversationButtonComponent.vue'
 
     export default {
-        name: 'App',
         components: { 'nav-bar': NavBar, 'conv-button': ConversationButton, IonContent, IonAvatar, IonButton,IonGrid, IonRow, IonCol, IonFooter },
         data() {
             return {

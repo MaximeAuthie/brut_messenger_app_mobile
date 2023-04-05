@@ -10,7 +10,7 @@
 
             <div class="button">
                 <ion-button class="custom main" expand="block">Confirmer</ion-button>
-                <router-link to="/general-settings" class="no-underline">
+                <router-link to="/user-profile  " class="no-underline">
                     <ion-button class="custom accessory" expand="block">Annuler</ion-button>
                 </router-link>
             </div>
