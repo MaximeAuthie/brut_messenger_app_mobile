@@ -19,7 +19,17 @@
                 </ion-row>
             </ion-grid>
             <div class="conv-container">
-                
+                <interlocutor-message></interlocutor-message>
+                <user-message slot="end"></user-message>
+                <interlocutor-message></interlocutor-message>
+                <user-message slot="end"></user-message>
+                <interlocutor-message></interlocutor-message>
+                <user-message slot="end"></user-message>
+                <interlocutor-message></interlocutor-message>
+                <user-message slot="end"></user-message>
+                <interlocutor-message></interlocutor-message>
+                <interlocutor-message></interlocutor-message>
+                <interlocutor-message></interlocutor-message>
             </div>
         </ion-content>
         <ion-footer class="custom">
@@ -44,14 +54,17 @@
     import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput } from '@ionic/vue';
     import { defineComponent } from 'vue';
 
+    import InterlocutorMessage from '../components/InterlocutorMessageComponent.vue';
+    import UserMessage from '../components/UserMessageComponent.vue';
+
     export default {
-        components: { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput},
+        components: { 'interlocutor-message': InterlocutorMessage, 'user-message': UserMessage, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput},
     }
 </script>
 
 <style scoped>
     ion-content {
-        --ion-background-color: var(--ion-color-brutRed);
+        --ion-background-color: var(--ion-color-brutBlue);
     }
 
     ion-grid.header{
