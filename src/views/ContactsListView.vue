@@ -13,7 +13,17 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
+            <div class="button">
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
+                <contact-button></contact-button>
 
+            </div>
         </ion-content>
         <ion-footer>
             <nav-bar></nav-bar>
@@ -27,9 +37,10 @@
     import { defineComponent } from 'vue';
 
     import NavBar from '../components/NavBarComponent.vue';
+    import ContactButton from '../components/ContactButtonComponent.vue'
 
     export default {
-        components: { 'nav-bar': NavBar, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter },
+        components: { 'nav-bar': NavBar, 'contact-button': ContactButton, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter },
     }
 </script>
 
@@ -84,6 +95,16 @@ ion-content {
         font-size: 1.2em;
         color: black;
     }
+
+    .button {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        margin-top: 2vh;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
     ion-button.accessory {
         --background: var(--ion-color-brutLight);
         --background-hover: #9ce0be;
