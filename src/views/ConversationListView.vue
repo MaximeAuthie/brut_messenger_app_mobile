@@ -23,15 +23,8 @@
                 </router-link>
             </div>
             <div class="button">
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
-                <conv-button></conv-button>
+                <conv-button v-for="conversation in conversationsList" :key="conversation.id" :urlImg="conversation.urlImg" :name="conversation.name"></conv-button>
+                
             </div>    
         </ion-content>
         <ion-footer>
@@ -52,13 +45,48 @@
         components: { 'nav-bar': NavBar, 'conv-button': ConversationButton, IonContent, IonAvatar, IonButton,IonGrid, IonRow, IonCol, IonFooter },
         data() {
             return {
-                conversations: {
-                    nom1: "Cécilia Orsi",
-                    nom2: "Simon Labatut",
-                    nom3: "La famille <3",
-                    nom4: "Chantal Authié",
-                    nom5: "Daniel Authié",
-                }
+                conversationsList: [
+                    {
+                        id:1,
+                        name:'Cécilia Orsi',
+                        urlImg:'../../public/assets/images/cecilia.jpg',
+                    },
+                    {
+                        id:2,
+                        name:'Simon Labatut',
+                        urlImg:'../../public/assets/images/simon.jpg',
+                    },
+                    {
+                        id:3,
+                        name:'La famille <3',
+                        urlImg:'../../public/assets/images/Julia.jpg',
+                    },
+                    {
+                        id:4,
+                        name:'Chantal Authié',
+                        urlImg:'../../public/assets/images/chantal.jpg',
+                    },
+                    {
+                        id:5,
+                        name:'Daniel Authié',
+                        urlImg:'../../public/assets/images/daniel.JPG',
+                    },
+                    {
+                        id:6,
+                        name:'Les copaiiiings!',
+                        urlImg:'../../public/assets/images/compaings.JPG',
+                    },
+                    {
+                        id:7,
+                        name:'Camille Lagane',
+                        urlImg:'../../public/assets/images/camille.jpg',
+                    },
+                    {
+                        id:8,
+                        name:'Mathieu Lestrade',
+                        urlImg:'../../public/assets/images/mathieu.jpg',
+                    },
+                ]
             }
         }
     }

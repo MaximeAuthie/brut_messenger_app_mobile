@@ -1,9 +1,9 @@
 <template>
     <div>
         <ion-avatar class="custom">
-                <img src="../../public/assets/images/cecilia.jpg" alt="Photo interlocuteur">
+                <img :src="urlImg" alt="Photo interlocuteur">
         </ion-avatar>
-        <h2>Cécilia Orsi</h2> 
+        <h2>{{name}}</h2> 
         <img src="../../public/assets/icon/go.png" alt="Icone go" class="go">
     </div>
 </template>
@@ -15,6 +15,16 @@
     export default defineComponent({
         name: 'conversation-button',
         components: { IonAvatar },
+        props: {
+            urlImg: {
+                type: String,
+                required: true,
+            },
+            name: {
+                type: String,
+                required: true,
+            },
+        },
     }); 
 </script>
 
