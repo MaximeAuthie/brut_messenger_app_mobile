@@ -15,12 +15,12 @@
         </ion-grid>
 
         <ion-avatar class="custom">
-            <img src="../../public/assets/images/moi.jpg" alt="">
+            <img src="../../public/assets/images/famille.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
             <ion-label position="fixed">Nom du groupe</ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
+            <ion-input class="custom" type="text" name="groupName">{{ group.name }}</ion-input>
             <br>
             <ion-grid>
                 <ion-row>
@@ -28,13 +28,18 @@
                         <ion-label position="fixed">Membres du groupe : </ion-label>
                     </ion-col>
                     <ion-col size="2">
-                        <router-link to="/conversation-list">
+                        <router-link to="/group-invitation">
                             <ion-icon :icon="addOutline" size="large"></ion-icon>
                         </router-link>
                     </ion-col>
                 </ion-row>
             </ion-grid>
-
+            <member-button v-for="member in memberList"
+                :key="member.id"
+                :name="member.name"
+                :url-img="member.urlImg"
+            >
+            </member-button>
             <div class="button">
                 <ion-button class="custom main" expand="block">Enregistrer</ion-button>
                 <ion-button class="custom accessory" expand="block">Quitter le groupe</ion-button>
@@ -48,12 +53,36 @@
     import { chevronBackOutline, addOutline } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
+    import MemberButton from '@/components/MemberButtonComponent.vue';
+
     export default defineComponent({
-        name: 'settings-component',
-        components: { IonContent, IonLabel, IonAvatar, IonButton, IonIcon, IonGrid, IonRow, IonCol, IonInput },
+        name: 'group-settings',
+        components: { 'member-button': MemberButton ,IonContent, IonLabel, IonAvatar, IonButton, IonIcon, IonGrid, IonRow, IonCol, IonInput },
         setup() {
             return { chevronBackOutline, addOutline };
         },
+        data() {
+            return {
+                group: {
+                    id: 1,
+                    name: "La famille <3"
+                },
+                memberList: [
+                    {
+                        id:1,
+                        name:'Cécilia Orsi',
+                        urlImg:'../../public/assets/images/cecilia.jpg',
+                        role:'1'
+                    },
+                    {
+                        id:2,
+                        name:'Julia Biderman',
+                        urlImg:'../../public/assets/images/julia.jpg',
+                        role:'2'
+                    },
+                ],
+            }
+        }
     }); 
 </script>
 
