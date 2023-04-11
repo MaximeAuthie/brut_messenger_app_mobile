@@ -14,15 +14,11 @@
                 </ion-row>
             </ion-grid>
             <div class="button">
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-                <contact-button></contact-button>
-
+                <contact-button v-for="contact in contactsList" 
+                    :key="contact.id"
+                    :name="contact.name"
+                    :url-img="contact.urlImg">
+                </contact-button>
             </div>
         </ion-content>
         <ion-footer>
@@ -40,7 +36,54 @@
     import ContactButton from '../components/ContactButtonComponent.vue'
 
     export default {
+        name:'contact-list',
         components: { 'nav-bar': NavBar, 'contact-button': ContactButton, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter },
+        data() {
+            return {
+                contactsList: [
+                    {
+                        id:1,
+                        name:'Cécilia Orsi',
+                        urlImg:'../../public/assets/images/cecilia.jpg',
+                    },
+                    {
+                        id:2,
+                        name:'Simon Labatut',
+                        urlImg:'../../public/assets/images/simon.jpg',
+                    },
+                    {
+                        id:3,
+                        name:'Julia Biderman',
+                        urlImg:'../../public/assets/images/Julia.jpg',
+                    },
+                    {
+                        id:4,
+                        name:'Chantal Authié',
+                        urlImg:'../../public/assets/images/chantal.jpg',
+                    },
+                    {
+                        id:5,
+                        name:'Daniel Authié',
+                        urlImg:'../../public/assets/images/daniel.JPG',
+                    },
+                    {
+                        id:6,
+                        name:'Anatole Brunel',
+                        urlImg:'../../public/assets/images/compaings.JPG',
+                    },
+                    {
+                        id:7,
+                        name:'Camille Lagane',
+                        urlImg:'../../public/assets/images/camille.jpg',
+                    },
+                    {
+                        id:8,
+                        name:'Mathieu Lestrade',
+                        urlImg:'../../public/assets/images/mathieu.jpg',
+                    },
+                ]
+            }
+        }
     }
 </script>
 
