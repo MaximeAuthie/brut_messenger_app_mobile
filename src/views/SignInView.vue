@@ -6,21 +6,23 @@
         </ion-avatar>
 
         <div class="form">
-            <ion-label position="fixed">Identifiant</ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
+            <ion-label position="fixed">Adresse mail</ion-label>
+            <ion-input v-model="userData.mail" :class="{badInput: isMailEmpty || !isMailCorrect}" @keyup="checkImputKeyUp" type="email" name="email"></ion-input>
+            <p v-if="isMailEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre adresse mail</p>
+            <p v-if="!isMailCorrect" class="errorMsg errorMsgImput">Adresse mail incorrecte.</p>
 
             <ion-label position="fixed">Mot de passe</ion-label>
-            <ion-input class="custom" type="password" name="password1"></ion-input>
+            <ion-input v-model="userData.password" :class="{badInput: isPasswordEmpty}" @keyup="checkImputKeyUp" type="password" name="password"></ion-input>
+            <p v-if="isPasswordEmpty" class="errorMsg errorMsgImput">Veuillez saisir un mot de passe</p>
 
             <div class="button">
-                <ion-button class="custom main" expand="block">Connexion</ion-button>
-                <ion-button class="custom accessory" expand="block">Mot de passe oublié</ion-button>
+                <ion-button @click="submitConnexion" class="custom main" expand="block">Connexion</ion-button>
+                <ion-button class="custom accessory" expand="block"><a href="http://localhost:8080/forgot-password" class="no-underline">Mot de passe oublié</a></ion-button>
             </div>
 
             <ion-text color="light">
-                <p>Pas encore inscrit? <a href="http://localhost:8081/register" >Clique ici</a> pour accéder au formulaire d'inscription.</p>
+                <p>Pas encore inscrit? <a href="http://localhost:8080/register" >Clique ici</a> pour accéder au formulaire d'inscription.</p>
             </ion-text>
-
         </div>
        
 
@@ -34,6 +36,63 @@
     export default defineComponent({
         name: 'settings-component',
         components: { IonContent, IonInput, IonLabel, IonAvatar, IonText, IonButton},
+        data() {
+            return {
+                isMailEmpty: false,
+                isPasswordEmpty: false,
+                isMailCorrect: true,
+                isImputEmpty: true,
+                userData: {
+                    mail: '',
+                    password: '',
+                },
+
+            }
+        },
+        methods: {
+            submitConnexion() {
+                this.checkImputSubmit();
+                this.checkMail();
+                if (this.isImputEmpty == false && this.isMailCorrect == true) {
+                    this.$router.push('/conversation-list')
+                }
+            },
+            checkImputKeyUp() {
+                if (this.userData.mail != '') {
+                  this.isMailEmpty= false;
+                } 
+              if (this.userData.password != '') {
+                  this.isPasswordEmpty= false;
+              } 
+            },
+            checkImputSubmit() { // Vérifie si tous les champs sont remplis
+              this.resetIsEmptyData(); // Remets tous les booléens à false 
+              if (this.userData.mail == '') {
+                  this.isMailEmpty= true;
+                  this.isImputEmpty= true;
+              }
+              if (this.userData.password == '') {
+                  this.isPasswordEmpty= true;
+                  this.isImputEmpty= true;
+              }
+          },
+          resetIsEmptyData() { // Remets tous les booléens à false 
+                this.isImputEmpty=false; 
+                this.isMailEmpty= false;
+                this.isPasswordEmpty= false;
+          },
+          checkMail() { // Vérifie si le format du mail est correct
+            this.isMailCorrect = true;
+            const pattern = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
+            if (this.userData.mail != '') {
+              if (pattern.test(this.userData.mail)) {
+              this.isMailCorrect = true;
+              } else {
+                this.isMailCorrect = false;
+              }
+            }
+          }
+        }
     }); 
 </script>
 
@@ -72,7 +131,7 @@
         line-height: 0px;
     }
 
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -126,14 +185,23 @@
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
+        font-size: 1.5em;
+        font-family: 'Dongle', sans-serif;
+        line-height: 15px;
+    }
+    .errorMsgImput {
+        margin-left: 5%;
     }
 
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
     }
+
+    .no-underline {
+        text-decoration: none;
+        color: #000000;
+    } 
 
     ion-text p {
         text-align: center;
