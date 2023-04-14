@@ -28,10 +28,11 @@
                 <ion-label position="fixed">Nouveau mot de passe</ion-label>
                 <ion-input v-model="userData.password" @keyup="checkImputKeyUp" :class="{badInput: passwordError}" type="password" name="password"></ion-input>
             
-                <ion-label position="fixed">Ressaisir le nouveau mot de passe</ion-label>
+                <ion-label position="fixed">Ressaisir le mot de passe</ion-label>
                 <ion-input v-model="userData.rePassword" @keyup="checkImputKeyUp" :class="{badInput: passwordError}" type="password" name="rePassword"></ion-input>
 
-                <p v-if="passwordError" class="errorMsg p-center">Les deux mots de passe saisis ne sont pas identiques!</p>
+                <p v-if="passwordError" class="errorMsg">Les deux mots de passe saisis ne sont pas identiques!</p>
+                <p v-if="isFormSubmit" class="successMsg">Vos modifications ont bien été enregistrées.</p>
 
                 <div class="button">
                     <ion-button @click="submitRegister" class="custom main" expand="block">Enregistrer</ion-button>
@@ -59,6 +60,7 @@
         components: { 'nav-bar': NavBar, IonContent, IonInput, IonLabel, IonAvatar, IonButton, IonFooter },
         data() {
             return {
+                isFormSubmit: false,
                 isFirstNameEmpty: false,
                 isLastNameEmpty: false,
                 isMailEmpty: false,
@@ -81,17 +83,17 @@
             submitRegister() {
                 this.checkImputSubmit();
                 this.checkMail();
-                this.checkPassword
+                this.checkPassword();
                 if (this.isImputEmpty == false && this.isMailCorrect == true && !this.passwordError) {
-                    //this.$router.push('/conversation-list')
+                    this.isFormSubmit = true;
                 }
             },
             checkImputKeyUp() {
                 if (this.userData.firstName != '') {
-                  this.isMailEmpty= false;
+                  this.isFirstNameEmpty= false;
                 }
                 if (this.userData.lastName != '') {
-                  this.isMailEmpty= false;
+                  this.isLastNameEmpty= false;
                 } 
                 if (this.userData.mail != '') {
                   this.isMailEmpty= false;
@@ -134,7 +136,7 @@
           },
           checkPassword() { // Vérifie si les deux password sont identiques
                 this.passwordError = false;
-                if (this.isPasswordEmpty == false && this.isRePasswordEmpty == false) {
+                if (!this.isPasswordEmpty || !this.isRePasswordEmpty) {
                     if (this.userData.password != this.userData.rePassword) {
                         this.passwordError= true;
                     }
@@ -245,6 +247,14 @@
         font-weight: bold;
         font-size: 1.2em;
         font-family: 'Space Mono', monospace;
+        text-align: center;
+    }
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 
     .badInput {
