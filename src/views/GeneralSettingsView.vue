@@ -30,8 +30,10 @@
                     </ion-radio-group>
                 </ion-list>
 
+                <p v-if="isFormSubmit" class="successMsg">Vos informations personnelles ont bien été enregistrées.</p>
+
                 <div class="button">
-                    <ion-button class="custom main" expand="block">Enregistrer</ion-button>
+                    <ion-button @click="submitGeneralSettings" class="custom main" expand="block">Enregistrer</ion-button>
                 </div>
 
             </div>
@@ -50,6 +52,16 @@
 
     export default defineComponent({
         components: { 'nav-bar': NavBar, IonContent, IonLabel, IonAvatar, IonRadio, IonRadioGroup, IonButton, IonItem, IonList, IonFooter },
+        data() {
+            return {
+                isFormSubmit: false
+            }
+        },
+        methods: {
+            submitGeneralSettings() {
+                this.isFormSubmit = true;
+            }
+        }
     }); 
 </script>
 
@@ -137,6 +149,14 @@
         font-weight: bold;
         font-size: 1.2em;
         font-family: 'Space Mono', monospace;
+    }
+
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 
     .badInput {

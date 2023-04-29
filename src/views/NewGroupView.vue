@@ -20,12 +20,13 @@
 
         <div class="form">
             <ion-label position="fixed">Nom du groupe : </ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
+            <ion-input v-model="groupData.name" @keyup="checkImputKeyUp" class="custom" type="text" name="firstName"></ion-input>
+            <p v-if="isGroupNameEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre prénom</p>
             <br>
             <ion-grid>
                 <ion-row>
                     <ion-col size="10">
-                        <ion-label position="fixed">Membres du groupe : </ion-label>
+                        <ion-label position="fixed">Membres du groupe : </ion-label> <!-- //!Mettre un écouteur sur la data groupDate.membersList pour vérifier si la liste est vide ou nom -->
                     </ion-col>
                     <ion-col size="2">
                         <router-link to="/conversation-list">
@@ -35,8 +36,10 @@
                 </ion-row>
             </ion-grid>
 
+            <p v-if="isMemberListEmpty" class="errorMsg errorMsgImput">Veuillez ajouter des membres au groupe</p>
+
             <div class="button">
-                <ion-button class="custom main" expand="block">Créer</ion-button>
+                <ion-button @click="submitNewGroup" class="custom main" expand="block">Créer</ion-button>
             </div>
         </div>
     </ion-content>
@@ -48,11 +51,56 @@
     import { defineComponent } from 'vue';
 
     export default defineComponent({
-        name: 'settings-component',
+        name: 'new-group',
         components: { IonContent, IonLabel, IonAvatar, IonButton, IonIcon, IonGrid, IonRow, IonCol, IonInput },
         setup() {
             return { chevronBackOutline, addOutline };
         },
+        data() {
+            return {
+                isGroupNameEmpty: false,
+                isMemberListEmpty: false,
+                isImputEmpty: false,
+                isFormSubmit: false,
+                groupData: {
+                    name:'',
+                    membersList: []
+                }
+            }
+        },
+        methods: {
+            submitNewGroup() {
+                this.checkImputSubmit();
+                if (!this.isImputEmpty) {
+                    this.isFormSubmit = true;
+                }
+            },
+            checkImputKeyUp() {
+                if (this.groupData.name != '') {
+                  this.isGroupNameEmpty = false;
+                }
+                if (this.groupData.membersList.length > 0) {
+                  this.isMemberListEmpty = false;
+                } 
+            },
+            checkImputSubmit() { // Vérifie si tous les champs sont remplis
+              this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
+                if (this.groupData.name == '') {
+                  this.isGroupNameEmpty = true;
+                  this.isImputEmpty = true;
+                }
+                if (this.groupData.membersList.length == 0) {
+                  this.isMemberListEmpty = true;
+                  this.isImputEmpty = true;
+                }
+            },
+            resetIsEmptyData() { // Remets tous les booléens à false +
+                this.isFormSubmit = false;
+                this.isImputEmpty = false;
+                this.isGroupNameEmpty = false;
+                this.isMemberListEmpty = false;
+            },
+        }
     }); 
 </script>
 
