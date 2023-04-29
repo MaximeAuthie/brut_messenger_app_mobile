@@ -23,8 +23,11 @@
                 </router-link>
             </div>
             <div class="button">
-                <conv-button v-for="conversation in conversationsList" :key="conversation.id" :urlImg="conversation.urlImg" :name="conversation.name"></conv-button>
-                
+                <conv-button v-for="conversation in conversationsList" 
+                    :key="conversation.id"
+                    :urlImg="conversation.urlImg"
+                    :name="conversation.name">
+                </conv-button>
             </div>    
         </ion-content>
         <ion-footer>
@@ -42,6 +45,7 @@
     import ConversationButton from '../components/ConversationButtonComponent.vue'
 
     export default {
+        name:'conversation-list',
         components: { 'nav-bar': NavBar, 'conv-button': ConversationButton, IonContent, IonAvatar, IonButton,IonGrid, IonRow, IonCol, IonFooter },
         data() {
             return {

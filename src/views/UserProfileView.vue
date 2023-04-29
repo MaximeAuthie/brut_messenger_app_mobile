@@ -32,10 +32,10 @@
                 <ion-input v-model="userData.rePassword" @keyup="checkImputKeyUp" :class="{badInput: passwordError}" type="password" name="rePassword"></ion-input>
 
                 <p v-if="passwordError" class="errorMsg">Les deux mots de passe saisis ne sont pas identiques!</p>
-                <p v-if="isFormSubmit" class="successMsg">Vos modifications ont bien été enregistrées.</p>
+                <p v-if="isFormSubmit" class="successMsg">Vos informations personnelles ont bien été enregistrées.</p>
 
                 <div class="button">
-                    <ion-button @click="submitRegister" class="custom main" expand="block">Enregistrer</ion-button>
+                    <ion-button @click="submitUserProfile" class="custom main" expand="block">Enregistrer</ion-button>
                     <router-link to="/delete-account" class="no-underline">
                         <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
                     </router-link>
@@ -80,7 +80,7 @@
             }
         },
         methods: {
-            submitRegister() {
+            submitUserProfile() {
                 this.checkImputSubmit();
                 this.checkMail();
                 this.checkPassword();
@@ -90,49 +90,50 @@
             },
             checkImputKeyUp() {
                 if (this.userData.firstName != '') {
-                  this.isFirstNameEmpty= false;
+                  this.isFirstNameEmpty = false;
                 }
                 if (this.userData.lastName != '') {
-                  this.isLastNameEmpty= false;
+                  this.isLastNameEmpty = false;
                 } 
                 if (this.userData.mail != '') {
-                  this.isMailEmpty= false;
+                  this.isMailEmpty = false;
                 } 
                 if (this.userData.password != '') {
-                    this.isPasswordEmpty= false;
+                    this.isPasswordEmpty = false;
                 }
                 if (this.userData.rePassword != '') {
-                    this.isRePasswordEmpty= false;
+                    this.isRePasswordEmpty = false;
                 } 
             },
             checkImputSubmit() { // Vérifie si tous les champs sont remplis
               this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
               if (this.userData.firstName == '') {
-                  this.isFirstNameEmpty= true;
-                  this.isImputEmpty= true;
+                  this.isFirstNameEmpty = true;
+                  this.isImputEmpty=  true;
               }
               if (this.userData.lastName == '') {
-                  this.isLastNameEmpty= true;
-                  this.isImputEmpty= true;
+                  this.isLastNameEmpty = true;
+                  this.isImputEmpty = true;
               }
               if (this.userData.mail == '') {
-                  this.isMailEmpty= true;
-                  this.isImputEmpty= true;
+                  this.isMailEmpty = true;
+                  this.isImputEmpty = true;
               }
               if (this.userData.password != '') {
-                  this.isPasswordEmpty= false;
+                  this.isPasswordEmpty = false;
               }
               if (this.userData.rePassword != '') {
-                  this.isRePasswordEmpty= false;
+                  this.isRePasswordEmpty = false;
               }
           },
-          resetIsEmptyData() { // Remets tous les booléens à false 
-                this.isImputEmpty=false;
-                this.isFirstNameEmpty= false;
-                this.isLastNameEmpty= false;
-                this.isMailEmpty= false;
-                this.isPasswordEmpty= true;
-                this.isRePasswordEmpty= true;
+          resetIsEmptyData() { // Remets tous les booléens à leur valeur initiale
+                this.isFormSubmit = false;
+                this.isImputEmpty = false;
+                this.isFirstNameEmpty = false;
+                this.isLastNameEmpty = false;
+                this.isMailEmpty = false;
+                this.isPasswordEmpty = true;
+                this.isRePasswordEmpty = true;
           },
           checkPassword() { // Vérifie si les deux password sont identiques
                 this.passwordError = false;
