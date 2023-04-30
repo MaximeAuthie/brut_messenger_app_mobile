@@ -20,10 +20,15 @@
 
         <div class="form">
             <ion-label position="fixed">Adresse mail du contact</ion-label>
-            <ion-input class="custom" type="email" name="contact-email"></ion-input>
+            <ion-input v-model="contactMail" @keyup="checkImputKeyUp" :class="{badInput: isMailEmpty || !isMailCorrect}" type="email" name="contact-email"></ion-input>
+
+            <p v-if="isMailEmpty" class="errorMsg errorMsgImput">Veuillez saisir une adresse mail</p>
+            <p v-if="!isMailCorrect" class="errorMsg errorMsgImput">Adresse mail incorrecte</p>
+
+            <p v-if="isFormSubmit" class="successMsg">L'invitation a bien été envoyée</p>
 
             <div class="button">
-                <ion-button class="custom main" expand="block">Envoyer</ion-button>
+                <ion-button @click="submitConversationInvitation" class="custom main" expand="block">Envoyer</ion-button>
             </div>
         </div>
     </ion-content>
@@ -39,6 +44,49 @@
         setup() {
             return { chevronBackOutline, addOutline };
         },
+        data() {
+            return {
+                contactMail: '',
+                isMailEmpty: false,
+                isMailCorrect: true,
+                isFormSubmit: false
+            }
+        },
+        methods: {
+            submitConversationInvitation() {
+                this.checkImputSubmit();
+                this.checkMail();
+                if (this.isMailEmpty == false && this.isMailCorrect == true) {
+                    this.isFormSubmit = true;
+                }
+            },
+            checkImputKeyUp() {
+                if (this.contactMail!= '') {
+                  this.isMailEmpty = false;
+                }
+            },
+            checkImputSubmit() { // Vérifie si tous les champs sont remplis
+              this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
+                if (this.contactMail == '') {
+                  this.isMailEmpty = true;
+                }
+            },
+            resetIsEmptyData() { // Remets tous les booléens à false +
+                this.isMailEmpty = false;
+            },
+            checkMail() { // Vérifie si le format du mail est correct
+                this.isMailCorrect = true;
+                const pattern = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
+
+                if (this.contactMail != '') {
+                    if (pattern.test(this.contactMail)) {
+                        this.isMailCorrect = true;
+                    } else {
+                        this.isMailCorrect = false;
+                    }
+                }
+            }
+        }
     }); 
 </script>
 
@@ -88,7 +136,7 @@
         line-height: 0px;
     }
 
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -137,9 +185,18 @@
         font-size: 1.2em;
         font-family: 'Space Mono', monospace;
     }
-
+    .errorMsgImput {
+        margin-left: 5%;
+    }
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
+    }
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 </style>

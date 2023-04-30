@@ -20,16 +20,16 @@
 
         <div class="form">
             <ion-label position="fixed">Nom du groupe : </ion-label>
-            <ion-input v-model="groupData.name" @keyup="checkImputKeyUp" class="custom" type="text" name="firstName"></ion-input>
+            <ion-input v-model="groupData.name" @keyup="checkImputKeyUp" :class="{badInput : isGroupNameEmpty}" type="text" name="firstName"></ion-input>
             <p v-if="isGroupNameEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre prénom</p>
             <br>
             <ion-grid>
                 <ion-row>
                     <ion-col size="10">
-                        <ion-label position="fixed">Membres du groupe : </ion-label> <!-- //!Mettre un écouteur sur la data groupDate.membersList pour vérifier si la liste est vide ou nom -->
+                        <ion-label position="fixed">Membres du groupe : </ion-label>
                     </ion-col>
                     <ion-col size="2">
-                        <router-link to="/conversation-list">
+                        <router-link to="/group-invitation">
                             <ion-icon :icon="addOutline" size="large"></ion-icon>
                         </router-link>
                     </ion-col>
@@ -37,6 +37,7 @@
             </ion-grid>
 
             <p v-if="isMemberListEmpty" class="errorMsg errorMsgImput">Veuillez ajouter des membres au groupe</p>
+            <p v-if="isFormSubmit" class="successMsg">Le groupe a été créé et ajouté à la liste de vos conversations</p>
 
             <div class="button">
                 <ion-button @click="submitNewGroup" class="custom main" expand="block">Créer</ion-button>
@@ -68,6 +69,14 @@
                 }
             }
         },
+        watch: {
+            groupData() {
+                if (this.groupData.membersList.length !== 0) {
+                    this.isMemberListEmpty = false;
+                }
+            } 
+           
+        },
         methods: {
             submitNewGroup() {
                 this.checkImputSubmit();
@@ -79,9 +88,6 @@
                 if (this.groupData.name != '') {
                   this.isGroupNameEmpty = false;
                 }
-                if (this.groupData.membersList.length > 0) {
-                  this.isMemberListEmpty = false;
-                } 
             },
             checkImputSubmit() { // Vérifie si tous les champs sont remplis
               this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
@@ -153,7 +159,7 @@
         line-height: 0px;
     }
 
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
