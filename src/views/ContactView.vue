@@ -20,26 +20,26 @@
 
         <div class="form">
             <ion-label position="fixed">Prénom</ion-label>
-            <ion-input class="custom" type="text" name="firstName"></ion-input>
+            <ion-input :value="contactData.firstName" :disabled="true" type="text" name="firstName"></ion-input>
 
             <ion-label position="fixed">Nom</ion-label>
-            <ion-input class="custom" type="text" name="lastName"></ion-input>
+            <ion-input :value="contactData.lastName" :disabled="true" type="text" name="lastName"></ion-input>
 
             <ion-label position="fixed">Surnom</ion-label>
-            <ion-input class="custom" type="text" name="nickName"></ion-input>
+            <ion-input v-model="contactData.nickName" type="text" name="nickName"></ion-input>
         
             <ion-label position="fixed">Adresse mail</ion-label>
-            <ion-input class="custom" type="email" name="mail"></ion-input>
+            <ion-input :value="contactData.mail" :disabled="true" type="email" name="mail"></ion-input>
 
             <ion-label position="fixed">Anniversaire</ion-label>
-            <ion-input class="custom" type="date" name="birthday"></ion-input>
+            <ion-input :value="contactData.birthday" :disabled="true" type="text" name="birthday"></ion-input>
 
+            <p v-if="isFormSubmit" class="successMsg">Modifications enregistrées</p>
 
             <div class="button">
-                <ion-button class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Supprimer mon compte</ion-button>
+                <ion-button @click="submitContactNickname" class="custom main" expand="block">Enregistrer</ion-button>
+                <ion-button class="custom accessory" expand="block">Bloquer</ion-button>
             </div>
-
         </div>
     </ion-content>
   </template>
@@ -50,11 +50,27 @@
     import { defineComponent } from 'vue';
 
     export default defineComponent({
-        name: 'settings-component',
+        name: 'contact-profile',
         components: { IonContent, IonInput, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol },
-        
+        data() {
+            return {
+                isFormSubmit: false,
+                contactData: {
+                    firstName: 'Cécilia',
+                    lastName: 'Orsi',
+                    nickName: 'Sasa',
+                    mail: 'cecilia.orsi@orange.fr',
+                    birthday: '25 février',
+                    urlImg:'../../public/assets/images/cecilia.jpg',
+                },
+            }
+        },
+        methods: {
+            submitContactNickname() {
+                this.isFormSubmit = true;
+            }
+        }
     }); 
-
 </script>
 
 <style scoped>
@@ -91,7 +107,7 @@
         line-height: 0px;
     }
 
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -148,8 +164,18 @@
         font-family: 'Space Mono', monospace;
     }
 
+    .errorMsgImput {
+        margin-left: 5%;
+    }
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
+    }
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 </style>
