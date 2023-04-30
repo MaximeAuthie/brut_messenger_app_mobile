@@ -20,23 +20,23 @@
 
         <div class="form">
             <ion-label position="fixed">Surnom de l'interlocuteur</ion-label>
-            <ion-input class="custom" type="email" name="contact-email"></ion-input>
+            <ion-input v-model="contactNickname" type="email" name="contact-email"></ion-input>
+            <p v-if="isContactNicknameEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre prénom</p>
+
             <ion-label position="fixed">Couleur de mes messages</ion-label>
-            <ion-select placeholder="Choisissez une couleur">
-                <ion-select-option value="red">Rouge</ion-select-option>
-                <ion-select-option value="green">Vert</ion-select-option>
-                <ion-select-option value="yellow">Jaune</ion-select-option>
-                <ion-select-option value="blue">Bleu</ion-select-option>
+            <ion-select v-model="conversationSettings.userColor" >
+                <ion-select-option v-for="color in availableColors" :value="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
-            <ion-label position="fixed">Couleur des autre messages</ion-label>
-            <ion-select placeholder="Choisissez une couleur">
-                <ion-select-option value="red">Rouge</ion-select-option>
-                <ion-select-option value="green">Vert</ion-select-option>
-                <ion-select-option value="yellow">Jaune</ion-select-option>
-                <ion-select-option value="blue">Bleu</ion-select-option>
+
+            <ion-label position="fixed">Couleur de ses messages</ion-label>
+            <ion-select v-model="conversationSettings.contactColor">
+                <ion-select-option v-for="color in availableColors" :value="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
+
+            <p v-if="isFormSubmit" class="successMsg">Vos préférences ont bien été enregistrées.</p>
+
             <div class="button">
-                <ion-button class="custom main" expand="block">Envoyer</ion-button>
+                <ion-button @click="submitConversationSettings" class="custom main" expand="block">Envoyer</ion-button>
             </div>
         </div>
     </ion-content>
@@ -44,20 +44,72 @@
 
 <script lang="ts">
     import { IonContent, IonAvatar, IonButton, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
-    import { chevronBackOutline, addOutline } from 'ionicons/icons';
+    import { chevronBackOutline, addOutline, search } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
         components: { IonContent, IonLabel, IonAvatar, IonButton, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption },
         setup() {
             return { chevronBackOutline, addOutline };
-        },  
+        },
+        data() {
+            return {
+                isContactNicknameEmpty: false,
+                isFormSubmit: false,
+                contactNickname:'Simon Labatut',
+                conversationSettings: {
+                    userColor: 3,
+                    contactColor: 1
+                },
+                availableColors: [
+                    {
+                        id: 1,
+                        name: 'Rouge'
+                    },
+                    {
+                        id: 2,
+                        name: 'Vert'
+                    },
+                    {
+                        id: 3,
+                        name: 'Jaune'
+                    },
+                    {
+                        id: 4,
+                        name: 'Bleu'
+                    },
+                ]
+            }
+        },
+        methods: {
+            submitConversationSettings() {
+                this.checkImputSubmit();
+                if (this.isContactNicknameEmpty == false) {
+                    this.isFormSubmit = true;
+                }
+            },
+            checkImputKeyUp() {
+                if (this.contactNickname != '') {
+                  this.isContactNicknameEmpty = false;
+                }
+            },
+            checkImputSubmit() { // Vérifie si tous les champs sont remplis
+                this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
+                if (this.contactNickname == '') {
+                    this.isContactNicknameEmpty = true;
+                }
+            },
+          resetIsEmptyData() { // Remets tous les booléens à leur valeur initiale
+                this.isFormSubmit = false;
+                this.isContactNicknameEmpty = false;
+          },
+        }
     }); 
 </script>
 
 <style scoped>
     ion-content {
-        --ion-background-color: var(--ion-color-brutGreen);
+        --ion-background-color: var(--ion-color-brutRed);
         padding: 10%;
     }
 
@@ -101,7 +153,7 @@
         line-height: 0px;
     }
 
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -166,5 +218,16 @@
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
+    }
+
+    .errorMsgImput {
+        margin-left: 5%;
+    }
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 </style>
