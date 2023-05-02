@@ -46,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
     component: SignInView
   },
   {
-    path: '/contact',
+    path: '/contact-profile',
     name: 'Contact',
     component: ContactView
   },
