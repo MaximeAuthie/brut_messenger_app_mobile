@@ -21,7 +21,7 @@
         <div class="form">
             <ion-label position="fixed">Nom du groupe : </ion-label>
             <ion-input v-model="groupData.name" @keyup="checkImputKeyUp" :class="{badInput : isGroupNameEmpty}" type="text" name="firstName"></ion-input>
-            <p v-if="isGroupNameEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre prénom</p>
+            <p v-if="isGroupNameEmpty" class="errorMsg errorMsgImput">Veuillez saisir un nom de groupe</p>
             <br>
             <ion-grid>
                 <ion-row>
@@ -36,7 +36,7 @@
                 </ion-row>
             </ion-grid>
 
-            <p v-if="isMemberListEmpty" class="errorMsg errorMsgImput">Veuillez ajouter des membres au groupe</p>
+            <p v-if="isMembersListEmpty" class="errorMsg errorMsgImput">Veuillez ajouter des membres au groupe</p>
             <p v-if="isFormSubmit" class="successMsg">Le groupe a été créé et ajouté à la liste de vos conversations</p>
 
             <div class="button">
@@ -60,7 +60,7 @@
         data() {
             return {
                 isGroupNameEmpty: false,
-                isMemberListEmpty: false,
+                isMembersListEmpty: false,
                 isImputEmpty: false,
                 isFormSubmit: false,
                 groupData: {
@@ -72,7 +72,7 @@
         watch: {
             groupData() {
                 if (this.groupData.membersList.length !== 0) {
-                    this.isMemberListEmpty = false;
+                    this.isMembersListEmpty = false;
                 }
             } 
            
@@ -96,7 +96,7 @@
                   this.isImputEmpty = true;
                 }
                 if (this.groupData.membersList.length == 0) {
-                  this.isMemberListEmpty = true;
+                  this.isMembersListEmpty = true;
                   this.isImputEmpty = true;
                 }
             },
@@ -104,7 +104,7 @@
                 this.isFormSubmit = false;
                 this.isImputEmpty = false;
                 this.isGroupNameEmpty = false;
-                this.isMemberListEmpty = false;
+                this.isMembersListEmpty = false;
             },
         }
     }); 
@@ -209,6 +209,9 @@
         font-family: 'Space Mono', monospace;
     }
 
+    .errorMsgImput {
+        margin-left: 5%;
+    }
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;

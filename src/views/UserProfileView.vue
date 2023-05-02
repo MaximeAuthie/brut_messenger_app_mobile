@@ -257,7 +257,9 @@
         font-family: 'Space Mono', monospace;
         text-align: center;
     }
-
+    .errorMsgImput {
+        margin-left: 5%;
+    }
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;

@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-    import { IonContent, IonText, IonAvatar, IonButton, IonLabel, IonInput, IonButtons   } from '@ionic/vue';
+    import { IonContent, IonText, IonAvatar, IonButton, IonLabel, IonInput } from '@ionic/vue';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
@@ -46,7 +46,6 @@
                     mail: '',
                     password: '',
                 },
-
             }
         },
         methods: {
