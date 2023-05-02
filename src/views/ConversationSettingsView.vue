@@ -25,12 +25,12 @@
 
             <ion-label position="fixed">Couleur de mes messages</ion-label>
             <ion-select v-model="conversationSettings.userColor" >
-                <ion-select-option v-for="color in availableColors" :value="color.id">{{ color.name }}</ion-select-option>
+                <ion-select-option v-for="color in availableColors" :value="color.id" :key="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
 
             <ion-label position="fixed">Couleur de ses messages</ion-label>
             <ion-select v-model="conversationSettings.contactColor">
-                <ion-select-option v-for="color in availableColors" :value="color.id">{{ color.name }}</ion-select-option>
+                <ion-select-option v-for="color in availableColors" :value="color.id" :key="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
 
             <p v-if="isFormSubmit" class="successMsg">Vos préférences ont bien été enregistrées.</p>
