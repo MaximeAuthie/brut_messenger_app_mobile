@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import ConversationListView from '../views/ConversationListView.vue';
+import ConversationsListView from '../views/ConversationListView.vue';
 import ContactsListView from '../views/ContactsListView.vue';
 import UserProfileView from '../views/UserProfileView.vue';
 import GeneralSettingsView from '../views/GeneralSettingsView.vue';
 import SignInView from '../views/SignInView.vue';
-import ContactView from '../views/ContactView.vue';
+import ContactProfileView from '../views/ContactView.vue';
 import NewGroupView from '../views/NewGroupView.vue';
 import NewConversationView from '../views/NewConversationView.vue';
 import GroupInvitationView from '../views/GroupInvitationView.vue';
@@ -21,9 +21,9 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/home'
   },
   {
-    path: '/conversation-list',
-    name: 'ConversationList',
-    component: ConversationListView
+    path: '/conversations-list',
+    name: 'ConversationsList',
+    component: ConversationsListView
   },
   {
     path: '/contacts-list',
@@ -47,8 +47,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/contact-profile',
-    name: 'Contact',
-    component: ContactView
+    name: 'ContactProfile',
+    component: ContactProfileView
   },
   {
     path: '/new-group',
