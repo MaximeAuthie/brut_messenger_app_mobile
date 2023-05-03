@@ -14,7 +14,7 @@
             </ion-row>
         </ion-grid>
 
-        <ion-avatar class="custom">
+        <ion-avatar>
             <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
@@ -36,7 +36,7 @@
             <p v-if="isFormSubmit" class="successMsg">Vos préférences ont bien été enregistrées.</p>
 
             <div class="button">
-                <ion-button @click="submitConversationSettings" class="custom main" expand="block">Envoyer</ion-button>
+                <ion-button @click="submitConversationSettings" class="main" expand="block">Envoyer</ion-button>
             </div>
         </div>
     </ion-content>
@@ -119,20 +119,18 @@
 </script>
 
 <style scoped>
+
     ion-content {
         --ion-background-color: var(--ion-color-brutRed);
         padding: 10%;
     }
-
     ion-grid {
         line-height: 30px;
         width: 100%;
     }
-
     .return {
         padding-top: 2.5vh;
     }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -141,9 +139,7 @@
         font-size: 1.7em;
         line-height: 3.5vh;
     }
-
-    
-    ion-avatar.custom {
+    ion-avatar {
         width:150px;
         height: 150px;
         margin-top: 2vh;
@@ -152,18 +148,15 @@
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
     .form {
         padding: 10%;
     }
-
     ion-label {
         font-size: 2em;
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
     }
-
     ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
@@ -174,7 +167,6 @@
         font-size: 1.2em;
         color: black;
     }
-
     ion-select {
         background-color: var(--ion-color-brutLight);
         --padding-start:1vw;
@@ -186,7 +178,6 @@
         font-size: 1.2em;
         color: black;
     }
-
     .button {
         display: flex;
         flex-direction: column;
@@ -196,21 +187,19 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
         --border-width: 5px;
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        height: 6.5vh;
+        max-height: 6.5vh;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
         margin-top: 7vh;
         font-weight: normal;
     }
-
     ion-button.main {
         --background: var(--ion-color-brutRed);
         --background-hover: #9ce0be;
@@ -218,19 +207,16 @@
         --background-focused: #88f4be;
         --color: #FFFFFF;
     }
-
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
         font-size: 1.2em;
         font-family: 'Space Mono', monospace;
     }
-
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
     }
-
     .errorMsgImput {
         margin-left: 5%;
     }
@@ -241,4 +227,5 @@
         font-family: 'Space Mono', monospace;
         text-align: center;
     }
+
 </style>

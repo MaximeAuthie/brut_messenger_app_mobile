@@ -4,7 +4,7 @@
 
             <h1 class="title">Réglages généraux</h1>
     
-            <ion-avatar class="custom">
+            <ion-avatar>
                 <img src="../../public/assets/logo/LOGO_ROUND_RED.png" alt="">
             </ion-avatar>
 
@@ -33,7 +33,7 @@
                 <p v-if="isFormSubmit" class="successMsg">Vos informations personnelles ont bien été enregistrées.</p>
 
                 <div class="button">
-                    <ion-button @click="submitGeneralSettings" class="custom main" expand="block">Enregistrer</ion-button>
+                    <ion-button @click="submitGeneralSettings" class="main" expand="block">Enregistrer</ion-button>
                 </div>
 
             </div>
@@ -67,15 +67,11 @@
 </script>
 
 <style scoped>
+
     ion-content {
         --ion-background-color: var(--ion-color-brutBlue);
         padding: 10%;
     }
-
-    .return {
-        padding-top: 2.5vh;
-    }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -84,8 +80,7 @@
         font-size: 1.7em;
         line-height: 3.5vh;
     }
-
-    ion-avatar.custom {
+    ion-avatar {
         width:150px;
         height: 150px;
         margin-top: 2vh;
@@ -94,17 +89,14 @@
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
     .form {
         padding: 10%;
     }
-
     ion-label {
         font-size: 2em;
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
     }
-
     .button {
         display: flex;
         flex-direction: column;
@@ -114,21 +106,19 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
         --border-width: 5px;
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        height: 6.5vh;
+        max-height: 6.5vh;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
         margin-top: 1vh;
         font-weight: normal;
     }
-
     ion-button.main {
         --background: var(--ion-color-brutRed);
         --background-hover: #9ce0be;
@@ -136,7 +126,6 @@
         --background-focused: #88f4be;
         --color: #FFFFFF;
     }
-
     ion-button.accessory {
         --background: var(--ion-color-brutLight);
         --background-hover: #9ce0be;
@@ -144,14 +133,6 @@
         --background-focused: #88f4be;
         --color: #000000;
     }
-
-    .errorMsg {
-        color: rgb(255, 0, 0);
-        font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
-    }
-
     .successMsg {
         color: rgb(62, 118, 87);
         font-weight: bold;
@@ -160,12 +141,4 @@
         text-align: center;
     }
 
-    .badInput {
-        border: 4px solid #F55A4F;
-        box-shadow: 7px 7px 0px black;
-    }
-
-    .no-underline {
-        text-decoration: none;
-    } 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ion-avatar class="custom">
+        <ion-avatar>
                 <img :src="urlImg" alt="Photo interlocuteur">
         </ion-avatar>
         <h2>{{name}}</h2> 
@@ -44,7 +44,7 @@
         font-family: 'Dongle', sans-serif;
         margin-bottom: 1.5vh;
     }
-    ion-avatar.custom {
+    ion-avatar {
         height: 6vh;
         width: 6vh;
         border: solid black 3px;

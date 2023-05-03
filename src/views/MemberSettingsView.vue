@@ -45,8 +45,8 @@
             <p v-if="isFormSubmit" class="successMsg">Vos préférences ont bien été enregistrées.</p>
 
             <div class="button">
-                <ion-button @click="submitMemberSettings" class="custom main" expand="block">Envoyer</ion-button>
-                <ion-button class="custom accessory" expand="block">Exclure</ion-button>
+                <ion-button @click="submitMemberSettings" class="main" expand="block">Envoyer</ion-button>
+                <ion-button class="accessory" expand="block">Exclure</ion-button>
             </div>
         </div>
     </ion-content>
@@ -126,14 +126,14 @@
 </script>
 
 <style scoped>
-ion-content {
+
+    ion-content {
         --ion-background-color: var(--ion-color-brutRed);
         padding: 10%;
     }
     .return {
         padding-top: 2.5vh;
     }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -143,8 +143,6 @@ ion-content {
         line-height: 3.5vh;
         padding-top: 1.5vh;
     }
-    
-
     ion-avatar.custom {
         width:150px;
         height: 150px;
@@ -154,11 +152,9 @@ ion-content {
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
     .form {
         padding: 10%;
     }
-
     ion-label {
         font-size: 2em;
         font-weight: bold;
@@ -174,7 +170,6 @@ ion-content {
         font-size: 1.2em;
         color: black;
     }
-
     ion-select {
         background-color: var(--ion-color-brutLight);
         --padding-start:1vw;
@@ -195,21 +190,19 @@ ion-content {
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
         --border-width: 5px;
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        height: 6.5vh;
+        max-height: 6.5vh;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
         margin-top: 1vh;
         font-weight: normal;
     }
-
     ion-button.main {
         --background: var(--ion-color-brutRed);
         --background-hover: #9ce0be;
@@ -217,7 +210,6 @@ ion-content {
         --background-focused: #88f4be;
         --color: #FFFFFF;
     }
-
     ion-button.accessory {
         --background: var(--ion-color-brutLight);
         --background-hover: #9ce0be;
@@ -225,7 +217,6 @@ ion-content {
         --background-focused: #88f4be;
         --color: #000000;
     }
-
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
@@ -246,4 +237,5 @@ ion-content {
         font-family: 'Space Mono', monospace;
         text-align: center;
     }
+
 </style>

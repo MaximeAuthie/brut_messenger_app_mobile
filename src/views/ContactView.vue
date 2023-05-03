@@ -14,31 +14,31 @@
         </ion-grid>
         
         
-        <ion-avatar class="custom">
+        <ion-avatar>
             <img src="../../public/assets/images/moi.jpg" alt="">
         </ion-avatar>
 
         <div class="form">
             <ion-label position="fixed">Prénom</ion-label>
-            <ion-input :value="contactData.firstName" :disabled="true" type="text" name="firstName"></ion-input>
+            <ion-input :value="contact.firstName" :disabled="true" type="text" name="firstName"></ion-input>
 
             <ion-label position="fixed">Nom</ion-label>
-            <ion-input :value="contactData.lastName" :disabled="true" type="text" name="lastName"></ion-input>
+            <ion-input :value="contact.lastName" :disabled="true" type="text" name="lastName"></ion-input>
 
             <ion-label position="fixed">Surnom</ion-label>
-            <ion-input v-model="contactData.nickName" type="text" name="nickName"></ion-input>
+            <ion-input v-model="contact.nickname" type="text" name="nickName"></ion-input>
         
             <ion-label position="fixed">Adresse mail</ion-label>
-            <ion-input :value="contactData.mail" :disabled="true" type="email" name="mail"></ion-input>
+            <ion-input :value="contact.mail" :disabled="true" type="email" name="mail"></ion-input>
 
             <ion-label position="fixed">Anniversaire</ion-label>
-            <ion-input :value="contactData.birthday" :disabled="true" type="text" name="birthday"></ion-input>
+            <ion-input :value="contact.birthday" :disabled="true" type="text" name="birthday"></ion-input>
 
             <p v-if="isFormSubmit" class="successMsg">Modifications enregistrées</p>
 
             <div class="button">
-                <ion-button @click="submitContactNickname" class="custom main" expand="block">Enregistrer</ion-button>
-                <ion-button class="custom accessory" expand="block">Bloquer</ion-button>
+                <ion-button @click="submitContactNickname" class="main" expand="block">Enregistrer</ion-button>
+                <ion-button class="accessory" expand="block">Bloquer</ion-button>
             </div>
         </div>
     </ion-content>
@@ -55,10 +55,10 @@
         data() {
             return {
                 isFormSubmit: false,
-                contactData: {
+                contact: {
                     firstName: 'Cécilia',
                     lastName: 'Orsi',
-                    nickName: 'Sasa',
+                    nickname: 'Sasa',
                     mail: 'cecilia.orsi@orange.fr',
                     birthday: '25 février',
                     urlImg:'../../public/assets/images/cecilia.jpg',
@@ -67,13 +67,20 @@
         },
         methods: {
             submitContactNickname() {
+                this.checkNickname();
                 this.isFormSubmit = true;
+            },
+            checkNickname() {
+                if (this.contact.nickname == '') {
+                    this.contact.nickname = this.contact.firstName + ' ' + this.contact.lastName;
+                }
             }
         }
     }); 
 </script>
 
 <style scoped>
+
     ion-content {
         --ion-background-color: var(--ion-color-brutBlue);
         padding: 10%;
@@ -85,8 +92,7 @@
         font-size: 2.2em;
         line-height: 1.5vh;
     }
-
-    ion-avatar.custom {
+    ion-avatar {
         width:150px;
         height: 150px;
         margin-top: 2vh;
@@ -95,18 +101,15 @@
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
     .form {
         padding: 10%;
     }
-
     ion-label {
         font-size: 2em;
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
     }
-
     ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
@@ -117,7 +120,6 @@
         font-size: 1.2em;
         color: black;
     }
-
     .button {
         display: flex;
         flex-direction: column;
@@ -127,21 +129,19 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
         --border-width: 5px;
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        height: 6.5vh;
+        max-height: 6.5vh;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
         margin-top: 1vh;
         font-weight: normal;
     }
-
     ion-button.main {
         --background: var(--ion-color-brutRed);
         --background-hover: #9ce0be;
@@ -156,21 +156,6 @@
         --background-focused: #88f4be;
         --color: #000000;
     }
-
-    .errorMsg {
-        color: rgb(255, 0, 0);
-        font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
-    }
-
-    .errorMsgImput {
-        margin-left: 5%;
-    }
-    .badInput {
-        border: 4px solid #F55A4F;
-        box-shadow: 7px 7px 0px black;
-    }
     .successMsg {
         color: rgb(62, 118, 87);
         font-weight: bold;
@@ -178,4 +163,5 @@
         font-family: 'Space Mono', monospace;
         text-align: center;
     }
+
 </style>

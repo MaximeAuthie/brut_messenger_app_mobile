@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 </script>
 
 <style scoped>
+
     .container {
         display: flex;
         flex-direction: column;
@@ -24,13 +25,11 @@ import { defineComponent } from 'vue';
         font-family: 'Dongle', sans-serif;
         font-size: 1.2em;
     }
-
     .indication {
         text-align: end;
         line-height: 1vh;
         padding-left: 2vw;
     }
-
     .message {
         width: 49%;
         padding-top: 1vh;
@@ -44,4 +43,5 @@ import { defineComponent } from 'vue';
         text-align: end;
         background-color: var(--ion-color-brutYellow);
     }
+    
 </style>

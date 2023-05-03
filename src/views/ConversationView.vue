@@ -9,7 +9,7 @@
                         </router-link>
                     </ion-col>
                     <ion-col size="2.5">
-                        <ion-avatar class="custom">
+                        <ion-avatar>
                             <img src="../../public/assets/images/cecilia.jpg" alt="">
                         </ion-avatar>
                     </ion-col>
@@ -32,12 +32,11 @@
                 <interlocutor-message></interlocutor-message>
             </div>
         </ion-content>
-        <ion-footer class="custom">
+        <ion-footer>
             <ion-grid>
                 <ion-row>
                     <ion-col size="10">
-                        <ion-input class="custom">
-                        </ion-input>
+                        <ion-input></ion-input>
                     </ion-col>
                     <ion-col size="2">
                         <!-- <ion-button > -->
@@ -52,7 +51,7 @@
 
 <script lang="ts">
     import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput } from '@ionic/vue';
-    import { defineComponent } from 'vue';
+    // import { defineComponent } from 'vue';
 
     import InterlocutorMessage from '../components/InterlocutorMessageComponent.vue';
     import UserMessage from '../components/UserMessageComponent.vue';
@@ -63,10 +62,10 @@
 </script>
 
 <style scoped>
+
     ion-content {
         --ion-background-color: var(--ion-color-brutBlue);
     }
-
     ion-grid.header{
         display: flex;
         flex-direction: row;
@@ -78,7 +77,6 @@
     .return {
         padding-top: 2.5vh;
     }
-
     .header ion-col {
         padding: 0;
         line-height: 25px;
@@ -86,7 +84,6 @@
         flex-direction: row;
         align-items:center;
     }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -98,8 +95,7 @@
         margin-left: auto;
         margin-right: auto;
     }
-
-    ion-avatar.custom {
+    ion-avatar {
         width:70px;
         height: 70px;
         margin-top: 2vh;
@@ -108,7 +104,6 @@
         border: solid black 3px;
         box-shadow: 4px 4px 0px black;
     }
-
     .conv-container {
         margin: 3%;
         height: 75vh;
@@ -117,13 +112,11 @@
         border-radius: 10px;
         box-shadow: 4px 4px 0px black;
     }
-
-    ion-footer.custom {
+    ion-footer {
         background-color: var(--ion-color-brutYellow);
         border-top: solid black 4px;
     }
-
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -133,20 +126,8 @@
         font-size: 1.2em;
         color: black;
     }
-
     .send {
         width: 10vw;
     }
-
-    .errorMsg {
-        color: rgb(255, 0, 0);
-        font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
-    }
-
-    .badInput {
-        border: 4px solid #F55A4F;
-        box-shadow: 7px 7px 0px black;
-    }
+    
 </style>

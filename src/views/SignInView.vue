@@ -1,7 +1,7 @@
 <template>
     <ion-content :fullscreen="true" class="flex">
 
-        <ion-avatar class="custom">
+        <ion-avatar>
             <img src="../../public/assets/logo/LOGO_ROUND_YELLOW.png" alt="">
         </ion-avatar>
 
@@ -16,8 +16,8 @@
             <p v-if="isPasswordEmpty" class="errorMsg errorMsgImput">Veuillez saisir un mot de passe</p>
 
             <div class="button">
-                <ion-button @click="submitConnexion" class="custom main" expand="block">Connexion</ion-button>
-                <ion-button class="custom accessory" expand="block"><a href="http://localhost:8080/forgot-password" class="no-underline">Mot de passe oublié</a></ion-button>
+                <ion-button @click="submitConnexion" class="main" expand="block">Connexion</ion-button>
+                <ion-button class="accessory" expand="block"><a href="http://localhost:8080/forgot-password" class="no-underline">Mot de passe oublié</a></ion-button>
             </div>
 
             <ion-text color="light">
@@ -96,19 +96,12 @@
 </script>
 
 <style scoped>
+
     ion-content {
         --ion-background-color: var(--ion-color-brutGreen);
         padding: 10%;
     }
-
-    .title {
-        color: #000000;
-        text-align: center;
-        font-family: BUNGEE;
-        font-size: 2.2em;
-    }
-
-    ion-avatar.custom {
+    ion-avatar {
         width:150px;
         height: 150px;
         margin-top: 10vh;
@@ -118,18 +111,15 @@
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
     .form {
         padding: 10%;
     }
-
     ion-label {
         font-size: 2em;
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
     }
-
     ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
@@ -140,7 +130,6 @@
         font-size: 1.2em;
         color: black;
     }
-
     .button {
         display: flex;
         flex-direction: column;
@@ -150,14 +139,13 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
         --border-width: 5px;
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        height: 6.5vh;
+        max-height: 6.5vh;
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
         font-size: 2.2em;
@@ -172,7 +160,6 @@
         --background-focused: #88f4be;
         --color: #FFFFFF;
     }
-
     ion-button.accessory {
         --background: var(--ion-color-brutLight);
         --background-hover: #9ce0be;
@@ -180,7 +167,6 @@
         --background-focused: #88f4be;
         --color: #000000;
     }
-
     .errorMsg {
         color: rgb(255, 0, 0);
         font-weight: bold;
@@ -191,17 +177,14 @@
     .errorMsgImput {
         margin-left: 5%;
     }
-
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
     }
-
     .no-underline {
         text-decoration: none;
         color: #000000;
     } 
-
     ion-text p {
         text-align: center;
         font-family: 'Dongle', sans-serif;
@@ -209,8 +192,8 @@
         line-height: 25px;
         margin-top: 10vh;
     }
-
     ion-text a:visited {
         color: var(--ion-color-light);
     }
+
 </style>

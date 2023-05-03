@@ -37,6 +37,7 @@
 </script>
 
 <style scoped>
+
     ion-grid {
         border-top: solid 4px black;
         background-color: var(--ion-color-brutGreen);
@@ -49,5 +50,6 @@
     img {
         width: 75%;
     }
+    
 </style>
 

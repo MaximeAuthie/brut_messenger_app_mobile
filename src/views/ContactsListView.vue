@@ -4,7 +4,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size="3">
-                        <ion-avatar class="custom">
+                        <ion-avatar>
                             <img src="../../public/assets/images/moi.jpg" alt="">
                         </ion-avatar>
                     </ion-col>
@@ -30,7 +30,7 @@
 <script lang="ts">
     
     import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter } from '@ionic/vue';
-    import { defineComponent } from 'vue';
+    // import { defineComponent } from 'vue';
 
     import NavBar from '../components/NavBarComponent.vue';
     import ContactButton from '../components/ContactButtonComponent.vue'
@@ -88,14 +88,11 @@
 </script>
 
 <style scoped>
-ion-content {
+
+    ion-content {
         --ion-background-color: var(--ion-color-brutRed);
         padding: 10%;
     }
-    .return {
-        padding-top: 2.5vh;
-    }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -105,11 +102,10 @@ ion-content {
         line-height: 3.5vh;
         padding-top: 1.5vh;
     }
-    
     ion-col {
         text-align: center;
     }
-    ion-avatar.custom {
+    ion-avatar {
         width:90px;
         height: 90px;
         margin-top: 2vh;
@@ -118,27 +114,6 @@ ion-content {
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
     }
-
-    .form {
-        padding: 10%;
-    }
-
-    ion-label {
-        font-size: 2em;
-        font-weight: bold;
-        font-family: 'Dongle', sans-serif;
-    }
-    ion-input.custom {
-        --background: var(--ion-color-brutLight);
-        --padding-start:1vw;
-        height: 40px;
-        border: 4px solid black;
-        box-shadow: 7px 7px 0px black;
-        margin-bottom: 1.5vh;
-        font-size: 1.2em;
-        color: black;
-    }
-
     .button {
         display: flex;
         flex-direction: column;
@@ -148,21 +123,4 @@ ion-content {
         padding-right: 5%;
     }
 
-    ion-button.accessory {
-        --background: var(--ion-color-brutLight);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #000000;
-    }
-    .errorMsg {
-        color: rgb(255, 0, 0);
-        font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
-    }
-    .badInput {
-        border: 4px solid #F55A4F;
-        box-shadow: 7px 7px 0px black;
-    }
 </style>

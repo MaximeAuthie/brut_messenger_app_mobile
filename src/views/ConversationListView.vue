@@ -4,7 +4,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size="3">
-                        <ion-avatar class="custom">
+                        <ion-avatar>
                             <img src="../../public/assets/images/moi.jpg" alt="">
                         </ion-avatar>
                     </ion-col>
@@ -16,10 +16,10 @@
 
             <div class="button">
                 <router-link to="/new-conversation" class="no-underline">
-                    <ion-button class="custom main" expand="block">Nouvelle conversation</ion-button>
+                    <ion-button class="main" expand="block">Nouvelle conversation</ion-button>
                 </router-link>
                 <router-link to="/new-group" class="no-underline">
-                    <ion-button class="custom main" expand="block">Nouveau groupe</ion-button>
+                    <ion-button class="main" expand="block">Nouveau groupe</ion-button>
                 </router-link>
             </div>
             <div class="button">
@@ -39,13 +39,13 @@
 <script lang="ts">
     
     import { IonContent, IonAvatar, IonButton,IonGrid, IonRow, IonCol, IonFooter } from '@ionic/vue';
-    import { defineComponent } from 'vue';
+    // import { defineComponent } from 'vue';
 
     import NavBar from '../components/NavBarComponent.vue';
     import ConversationButton from '../components/ConversationButtonComponent.vue'
 
     export default {
-        name:'conversation-list',
+        name:'conversations-list',
         components: { 'nav-bar': NavBar, 'conv-button': ConversationButton, IonContent, IonAvatar, IonButton,IonGrid, IonRow, IonCol, IonFooter },
         data() {
             return {
@@ -97,14 +97,11 @@
 </script>
 
 <style scoped>
-ion-content {
+
+    ion-content {
         --ion-background-color: var(--ion-color-brutLight);
         padding: 10%;
     }
-    .return {
-        padding-top: 2.5vh;
-    }
-
     .title {
         color: #000000;
         line-height: 0px;
@@ -114,11 +111,10 @@ ion-content {
         line-height: 3.5vh;
         padding-top: 1.5vh;
     }
-    
     ion-col {
         text-align: center;
     }
-    ion-avatar.custom {
+    ion-avatar {
         width:90px;
         height: 90px;
         margin-top: 2vh;
@@ -126,38 +122,6 @@ ion-content {
         margin-right: auto;
         border: solid black 5px;
         box-shadow: 7px 7px 0px black;
-    }
-
-    .form {
-        padding: 10%;
-    }
-
-    ion-label {
-        font-size: 2em;
-        font-weight: bold;
-        font-family: 'Dongle', sans-serif;
-    }
-    ion-input.custom {
-        --background: var(--ion-color-brutLight);
-        --padding-start:1vw;
-        height: 40px;
-        border: 4px solid black;
-        box-shadow: 7px 7px 0px black;
-        margin-bottom: 1.5vh;
-        font-size: 1.2em;
-        color: black;
-    }
-
-    ion-select {
-        background-color: var(--ion-color-brutLight);
-        --padding-start:1vw;
-        width: 100%;
-        height: 40px;
-        border: 4px solid black;
-        box-shadow: 7px 7px 0px black;
-        margin-bottom: 1.5vh;
-        font-size: 1.2em;
-        color: black;
     }
     .button {
         display: flex;
@@ -167,8 +131,7 @@ ion-content {
         padding-left: 5%;
         padding-right: 5%;
     }
-
-    ion-button.custom {
+    ion-button {
         --border-radius: 10px;
         --border-color: #000000;
         --border-style: solid;
@@ -176,12 +139,11 @@ ion-content {
         --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
         font-family: 'Dongle', sans-serif;
         line-height: 0px;
-        height: 7vh;
+        max-height: 6.5vh;
         font-size: 2.2em;
         margin-top: 1vh;
         font-weight: normal;
     }
-
     ion-button.main {
         --background: var(--ion-color-brutRed);
         --background-hover: #9ce0be;
@@ -189,27 +151,8 @@ ion-content {
         --background-focused: #88f4be;
         --color: #FFFFFF;
     }
-
-    ion-button.accessory {
-        --background: var(--ion-color-brutLight);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #000000;
-    }
-
-    .errorMsg {
-        color: rgb(255, 0, 0);
-        font-weight: bold;
-        font-size: 1.2em;
-        font-family: 'Space Mono', monospace;
-    }
-
-    .badInput {
-        border: 4px solid #F55A4F;
-        box-shadow: 7px 7px 0px black;
-    }
     .no-underline {
         text-decoration: none;
-    }   
+    }
+
 </style>
