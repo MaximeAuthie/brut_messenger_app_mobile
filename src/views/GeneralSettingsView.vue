@@ -12,7 +12,7 @@
                 <ion-label position="fixed">Taille des polices :</ion-label>
 
                 <ion-list>
-                    <ion-radio-group value="strawberries">
+                    <ion-radio-group v-model="fontSize">
                     <ion-item lines="none">
                         <ion-label>Petites</ion-label>
                         <ion-radio color="dark" slot="end" value="small"></ion-radio>
@@ -54,7 +54,8 @@
         components: { 'nav-bar': NavBar, IonContent, IonLabel, IonAvatar, IonRadio, IonRadioGroup, IonButton, IonItem, IonList, IonFooter },
         data() {
             return {
-                isFormSubmit: false
+                isFormSubmit: false,
+                fontSize: 'small'
             }
         },
         methods: {
