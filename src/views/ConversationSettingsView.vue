@@ -20,7 +20,7 @@
 
         <div class="form">
             <ion-label position="fixed">Surnom de l'interlocuteur</ion-label>
-            <ion-input v-model="contactNickname" type="email" name="contact-email"></ion-input>
+            <ion-input v-model="contact.nickname" :class="{ badInput: isContactNicknameEmpty }" type="email" name="contact-email"></ion-input>
             <p v-if="isContactNicknameEmpty" class="errorMsg errorMsgImput">Veuillez saisir votre prénom</p>
 
             <ion-label position="fixed">Couleur de mes messages</ion-label>
@@ -29,7 +29,7 @@
             </ion-select>
 
             <ion-label position="fixed">Couleur de ses messages</ion-label>
-            <ion-select v-model="conversationSettings.contactColor">
+            <ion-select v-model="contact.color">
                 <ion-select-option v-for="color in availableColors" :value="color.id" :key="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
 
@@ -44,7 +44,7 @@
 
 <script lang="ts">
     import { IonContent, IonAvatar, IonButton, IonLabel, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
-    import { chevronBackOutline, addOutline, search } from 'ionicons/icons';
+    import { chevronBackOutline, addOutline } from 'ionicons/icons';
     import { defineComponent } from 'vue';
 
     export default defineComponent({
@@ -56,10 +56,15 @@
             return {
                 isContactNicknameEmpty: false,
                 isFormSubmit: false,
-                contactNickname:'Simon Labatut',
+                contact: {
+                    id: 3,
+                    name: 'Simon Labatut',
+                    nickname: 'Don Diego de la Vega',
+                    color: 2,
+                    role: 'admin'
+                },
                 conversationSettings: {
                     userColor: 3,
-                    contactColor: 1
                 },
                 availableColors: [
                     {
@@ -83,26 +88,32 @@
         },
         methods: {
             submitConversationSettings() {
+                this.checkNickname();
                 this.checkImputSubmit();
                 if (this.isContactNicknameEmpty == false) {
                     this.isFormSubmit = true;
                 }
             },
             checkImputKeyUp() {
-                if (this.contactNickname != '') {
+                if (this.contact.nickname != '') {
                   this.isContactNicknameEmpty = false;
                 }
             },
             checkImputSubmit() { // Vérifie si tous les champs sont remplis
                 this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
-                if (this.contactNickname == '') {
+                if (this.contact.nickname == '') {
                     this.isContactNicknameEmpty = true;
                 }
             },
-          resetIsEmptyData() { // Remets tous les booléens à leur valeur initiale
-                this.isFormSubmit = false;
-                this.isContactNicknameEmpty = false;
-          },
+            resetIsEmptyData() { // Remets tous les booléens à leur valeur initiale
+                    this.isFormSubmit = false;
+                    this.isContactNicknameEmpty = false;
+            },
+            checkNickname() {
+                if (this.contact.nickname == '') {
+                    this.contact.nickname = this.contact.name;
+                }
+            }
         }
     }); 
 </script>
