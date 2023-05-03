@@ -3,8 +3,8 @@
         <ion-grid>
             <ion-row>
                 <ion-col size="2">
-                    <router-link to="/conversation-list">
-                        <router-link to="/conversation-list"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations"></router-link>
+                    <router-link to="/group-settings">
+                        <router-link to="/group-settings"><img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations"></router-link>
                     </router-link>
                 </ion-col>
                 <ion-col size="10">
@@ -19,31 +19,33 @@
 
         <div class="form">
             <ion-label position="fixed">Surnom de l'interlocuteur</ion-label>
-            <ion-input class="custom" type="email" name="contact-email"></ion-input>
+            <ion-input v-model="member.nickname" :class="{ badInput: isMemberNicknameEmpty }" type="email" name="contact-email"></ion-input>
+            <p v-if="isMemberNicknameEmpty" class="errorMsg errorMsgImput">Veuillez saisir un nom de groupe</p>
+
             <ion-label position="fixed">Couleur de ses messages</ion-label>
-            <ion-select placeholder="Choisissez une couleur">
-                <ion-select-option value="red">Rouge</ion-select-option>
-                <ion-select-option value="green">Vert</ion-select-option>
-                <ion-select-option value="yellow">Jaune</ion-select-option>
-                <ion-select-option value="blue">Bleu</ion-select-option>
+            <ion-select v-model="member.color" >
+                <ion-select-option v-for="color in availableColors" :value="color.id" :key="color.id">{{ color.name }}</ion-select-option>
             </ion-select>
             <br>
             <ion-label position="fixed">Rôle dans le groupe :</ion-label>
             <ion-list>
-                <ion-radio-group value="strawberries">
+                <ion-radio-group v-model="member.role">
                     <ion-item lines="none">
                         <ion-label>Administrateur</ion-label>
-                        <ion-radio color="dark" slot="end" value="small"></ion-radio>
+                        <ion-radio color="dark" slot="end" value="admin"></ion-radio>
                     </ion-item>
 
                     <ion-item lines="none">
                         <ion-label>Membre</ion-label>
-                        <ion-radio color="dark" slot="end" value="medium"></ion-radio>
+                        <ion-radio color="dark" slot="end" value="member"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
+
+            <p v-if="isFormSubmit" class="successMsg">Vos préférences ont bien été enregistrées.</p>
+
             <div class="button">
-                <ion-button class="custom main" expand="block">Envoyer</ion-button>
+                <ion-button @click="submitMemberSettings" class="custom main" expand="block">Envoyer</ion-button>
                 <ion-button class="custom accessory" expand="block">Exclure</ion-button>
             </div>
         </div>
@@ -60,6 +62,66 @@
         setup() {
             return { chevronBackOutline, addOutline };
         },
+        data() {
+            return {
+                isMemberNicknameEmpty: false,
+                isFormSubmit: false,
+                member: {
+                    id: 1,
+                    name: 'Maxime Authié',
+                    nickname: 'Maxou',
+                    role: 'member' ,
+                    color: 3
+                },
+                availableColors: [
+                    {
+                        id: 1,
+                        name: 'Rouge'
+                    },
+                    {
+                        id: 2,
+                        name: 'Vert'
+                    },
+                    {
+                        id: 3,
+                        name: 'Jaune'
+                    },
+                    {
+                        id: 4,
+                        name: 'Bleu'
+                    },
+                ]
+            }
+        },
+        methods: {
+            submitMemberSettings() {
+                this.checkNickname();
+                this.checkImputSubmit();
+                if (this.isMemberNicknameEmpty == false) {
+                    this.isFormSubmit = true;
+                }
+            },
+            checkImputKeyUp() {
+                if (this.member.nickname != '') {
+                  this.isMemberNicknameEmpty = false;
+                }
+            },
+            checkImputSubmit() { // Vérifie si tous les champs sont remplis
+                this.resetIsEmptyData(); // Remets tous les booléens à leur valeur par défaut
+                if (this.member.nickname == '') {
+                    this.isMemberNicknameEmpty = true;
+                }
+            },
+            resetIsEmptyData() { // Remets tous les booléens à leur valeur initiale
+                    this.isFormSubmit = false;
+                    this.isMemberNicknameEmpty = false;
+            },
+            checkNickname() {
+                if (this.member.nickname == '') {
+                    this.member.nickname = this.member.name;
+                }
+            }
+        }
     }); 
 </script>
 
@@ -102,7 +164,7 @@ ion-content {
         font-weight: bold;
         font-family: 'Dongle', sans-serif;
     }
-    ion-input.custom {
+    ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
         height: 40px;
@@ -170,9 +232,18 @@ ion-content {
         font-size: 1.2em;
         font-family: 'Space Mono', monospace;
     }
-
+    .errorMsgImput {
+        margin-left: 5%;
+    }
     .badInput {
         border: 4px solid #F55A4F;
         box-shadow: 7px 7px 0px black;
+    }
+    .successMsg {
+        color: rgb(62, 118, 87);
+        font-weight: bold;
+        font-size: 1.2em;
+        font-family: 'Space Mono', monospace;
+        text-align: center;
     }
 </style>
