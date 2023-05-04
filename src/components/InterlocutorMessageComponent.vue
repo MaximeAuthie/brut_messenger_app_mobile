@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="indication">Cécilia Orsi (18h30)</div>
-        <div class="message">Salut! Ca va?</div>
+        <div class="indication">{{ userFirstName }} {{ userLastName }} ({{ date }} - {{ hour }})</div>
+        <div class="message">{{ messageText }}</div>
     </div>
 </template>
 
@@ -10,6 +10,37 @@ import { defineComponent } from 'vue';
 
     export default defineComponent ({
         name: 'interlocutor-message',
+        props: {
+            userFirstName: {
+                type: String,
+                required: true
+            },
+            userLastName: {
+                type: String,
+                required: true
+            },
+            messageDate: {
+                type: String,
+                required: true
+            },
+            messageText: {
+                type: String,
+                required: true
+            }
+        },
+        data() {
+            return {
+                date:'',
+                hour:''
+            }
+        },
+        mounted() {
+            const dateObject = new Date(this.messageDate);
+            const dateOptions = {year: "numeric", month: "2-digit", day: "2-digit"};
+            const hourOptions = { hour:"2-digit", minute:"2-digit"};
+            this.date = dateObject.toLocaleDateString("fr-FR", dateOptions);
+            this.hour = dateObject.toLocaleTimeString("fr-FR", hourOptions);
+        }
     }); 
 </script>
 
@@ -20,7 +51,7 @@ import { defineComponent } from 'vue';
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        margin-top: 2vh;
+        margin-top: 3vh;
         margin-left: 1vw;
         font-family: 'Dongle', sans-serif;
         font-size: 1.2em
@@ -31,7 +62,7 @@ import { defineComponent } from 'vue';
         padding-left: 2vw;
     }
     .message {
-        width: 49%;
+        width: 75%;
         padding-top: 1vh;
         padding-bottom: 1vh;
         padding-left: 0.5vh;

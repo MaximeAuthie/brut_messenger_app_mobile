@@ -19,28 +19,34 @@
                 </ion-row>
             </ion-grid>
             <div class="conv-container">
-                <interlocutor-message></interlocutor-message>
-                <user-message slot="end"></user-message>
-                <interlocutor-message></interlocutor-message>
-                <user-message slot="end"></user-message>
-                <interlocutor-message></interlocutor-message>
-                <user-message slot="end"></user-message>
-                <interlocutor-message></interlocutor-message>
-                <user-message slot="end"></user-message>
-                <interlocutor-message></interlocutor-message>
-                <interlocutor-message></interlocutor-message>
-                <interlocutor-message></interlocutor-message>
+                <div v-for="message in messages" :key="message.id">
+                    <user-message 
+                    v-if="message.authorId == connectedUser.id" 
+                    slot="end"
+                    :userFirstName="message.authorFirstName"
+                    :userLastName="message.authorLastName"
+                    :messageDate="message.date"
+                    :messageText="message.content"
+                    ></user-message>
+                    <interlocutor-message
+                    v-else
+                    :userFirstName="message.authorFirstName"
+                    :userLastName="message.authorLastName"
+                    :messageDate="message.date"
+                    :messageText="message.content"
+                    ></interlocutor-message>
+                </div>
             </div>
         </ion-content>
         <ion-footer>
             <ion-grid>
                 <ion-row>
                     <ion-col size="10">
-                        <ion-input></ion-input>
+                        <ion-input v-model="messageInput"></ion-input>
                     </ion-col>
                     <ion-col size="2">
                         <!-- <ion-button > -->
-                            <img class="send" src="../../public/assets/icon/SEND.png" id="send-icon" alt="Envoyer message" title="Envoyer message">
+                            <img @click="sendNewMessage" class="send" src="../../public/assets/icon/SEND.png" id="send-icon" alt="Envoyer message" title="Envoyer message">
                         <!-- </ion-button> -->
                     </ion-col>
                 </ion-row>
@@ -49,7 +55,7 @@
     </ion-app>
 </template>
 
-<script lang="ts">
+<script>
     import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput } from '@ionic/vue';
     // import { defineComponent } from 'vue';
 
@@ -58,6 +64,76 @@
 
     export default {
         components: { 'interlocutor-message': InterlocutorMessage, 'user-message': UserMessage, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput},
+        data() {
+            return {
+                connectedUser: {
+                    id: 1,
+                    firstName: 'Maxime',
+                    lastName: 'Authié'
+                },
+                messageInput: '',
+                messages: [
+                    {
+                        id: 1,
+                        authorId : 2,
+                        authorFirstName: 'Cécilia',
+                        authorLastName: 'Orsi',
+                        date: 'Thu, 04 May 2023 12:15:28 GMT',
+                        content: 'Salut copaing! Comment ça va?'
+                    },
+                    {
+                        id: 2,
+                        authorId : 1,
+                        authorFirstName: 'Maxime',
+                        authorLastName: 'Authié',
+                        date: 'Thu, 04 May 2023 12:17:28 GMT',
+                        content: 'Salut partner! Muy bien! Y tu?'
+                    },
+                    {
+                        id: 3,
+                        authorId : 2,
+                        authorFirstName: 'Cécilia',
+                        authorLastName: 'Orsi',
+                        date: 'Thu, 04 May 2023 12:17:58 GMT',
+                        content: 'No hablo el Espanol! ^^'
+                    },
+                    {
+                        id: 4,
+                        authorId : 2,
+                        authorFirstName: 'Cécilia',
+                        authorLastName: 'Orsi',
+                        date: 'Thu, 04 May 2023 12:18:25 GMT',
+                        content: 'Ca me rappelle le lycée! :)'
+                    },
+                    {
+                        id: 5,
+                        authorId : 1,
+                        authorFirstName: 'Maxime',
+                        authorLastName: 'Authié',
+                        date: 'Thu, 04 May 2023 12:25:18 GMT',
+                        content: 'T\'as encore des nouvelles de JG au fait?'
+                    },
+                ]
+            }
+        },
+        methods: {
+            sendNewMessage() {
+                if (this.messageInput !== '') {
+                    const now = new Date();
+                    const date = now.toUTCString();
+                    const newMessage = {
+                        id: this.messages.length + 1,
+                        authorId : this.connectedUser.id,
+                        authorFirstName:this.connectedUser.firstName,
+                        authorLastName: this.connectedUser.lastName,
+                        date: date,
+                        content: this.messageInput
+                    }
+                    this.messages.push(newMessage);
+                    this.messageInput='';
+                }
+            }
+        }
     }
 </script>
 
@@ -129,5 +205,5 @@
     .send {
         width: 10vw;
     }
-    
+
 </style>
