@@ -51,22 +51,25 @@ import { defineComponent } from 'vue';
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-        margin-top: 3vh;
+        margin-top: 1.5vh;
+        margin-bottom: 3vh;
         margin-left: 1vw;
         font-family: 'Dongle', sans-serif;
-        font-size: 1.2em
+        
     }
     .indication {
         text-align: start;
         line-height: 1vh;
         padding-left: 2vw;
+        font-size: 1.2em
     }
     .message {
         width: 75%;
         padding-top: 1vh;
         padding-bottom: 1vh;
         padding-left: 0.5vh;
-        line-height: 1vh;
+        font-size: 1.5em;
+        line-height: 2vh;
         border: solid black 3px;
         border-radius: 10px 10px 10px 0px;
         box-shadow: 5px 5px 0px black;

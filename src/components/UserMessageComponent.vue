@@ -51,15 +51,17 @@
         flex-direction: column;
         align-items: flex-end;
         width: 100%;
-        margin-top: 3vh;
+        margin-top: 1.5vh;
+        margin-bottom: 3vh;
         padding-right: 2vw;
         font-family: 'Dongle', sans-serif;
-        font-size: 1.2em;
+        
     }
     .indication {
         text-align: end;
         line-height: 1vh;
         padding-left: 2vw;
+        font-size: 1.2em;
     }
     .message {
         max-width: 75%;
@@ -67,7 +69,8 @@
         padding-bottom: 1vh;
         padding-right: 1vh;
         padding-left: 1vh;
-        line-height: 1.5vh;
+        font-size: 1.5em;
+        line-height: 2vh;
         border: solid black 3px;
         border-radius: 10px 10px 0px 10px;
         box-shadow: 5px 5px 0px black;

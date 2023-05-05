@@ -182,7 +182,7 @@
     }
     .conv-container {
         margin: 3%;
-        height: 75vh;
+        min-height: 75vh;
         background-color: var(--ion-color-brutLight);
         border: solid black 3px;
         border-radius: 10px;
@@ -195,11 +195,12 @@
     ion-input {
         --background: var(--ion-color-brutLight);
         --padding-start:1vw;
+        font-family: 'Dongle', sans-serif;
         height: 40px;
         border: 4px solid black;
         box-shadow: 7px 7px 0px black;
         margin-bottom: 1.5vh;
-        font-size: 1.2em;
+        font-size: 1.5em;
         color: black;
     }
     .send {
