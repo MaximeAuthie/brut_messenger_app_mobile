@@ -2,7 +2,7 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <router-link to="/conversation-list">
+                <router-link to="/conversations-list">
                     <img src="../../public/assets/icon/CONVERSATIONS.png" alt="Liste des conversations" title="Liste des conversations">
                 </router-link>
                 

@@ -4,7 +4,7 @@
             <ion-grid class="header">
                 <ion-row>
                     <ion-col size="1.5">
-                        <router-link to="/conversation-list">
+                        <router-link to="/conversations-list">
                             <img class="return" src="../../public/assets/icon/back.png" id="return-icon" alt="Retour à la liste des conversations" title="Retour à la liste des conversations">
                         </router-link>
                     </ion-col>
@@ -13,7 +13,7 @@
                             <img src="../../public/assets/images/cecilia.jpg" alt="">
                         </ion-avatar>
                     </ion-col>
-                    <ion-col size="8">
+                    <ion-col class="title-box" size="8">
                         <h1 class="title">Cécilia Orsi</h1>
                     </ion-col>
                 </ion-row>
@@ -42,12 +42,10 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size="10">
-                        <ion-input v-model="messageInput"></ion-input>
+                        <ion-textarea v-model="messageInput" placeholder="Saisir votre message"></ion-textarea>
                     </ion-col>
                     <ion-col size="2">
-                        <!-- <ion-button > -->
-                            <img @click="sendNewMessage" class="send" src="../../public/assets/icon/SEND.png" id="send-icon" alt="Envoyer message" title="Envoyer message">
-                        <!-- </ion-button> -->
+                        <img @click="sendNewMessage" class="send" src="../../public/assets/icon/SEND.png" id="send-icon" alt="Envoyer message" title="Envoyer message">
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -56,14 +54,14 @@
 </template>
 
 <script>
-    import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput } from '@ionic/vue';
+    import { IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonTextarea  } from '@ionic/vue';
     // import { defineComponent } from 'vue';
 
     import InterlocutorMessage from '../components/InterlocutorMessageComponent.vue';
     import UserMessage from '../components/UserMessageComponent.vue';
 
     export default {
-        components: { 'interlocutor-message': InterlocutorMessage, 'user-message': UserMessage, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonInput},
+        components: { 'interlocutor-message': InterlocutorMessage, 'user-message': UserMessage, IonContent, IonAvatar, IonGrid, IonRow, IonCol, IonFooter, IonTextarea },
         data() {
             return {
                 connectedUser: {
@@ -150,9 +148,7 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .return {
-        padding-top: 2.5vh;
-    }
+   
     .header ion-col {
         padding: 0;
         line-height: 25px;
@@ -160,48 +156,33 @@
         flex-direction: row;
         align-items:center;
     }
-    .title {
-        color: #000000;
-        line-height: 0px;
-        text-align: center;
-        font-family: BUNGEE;
-        font-size: 1.7em;
-        line-height: 3.5vh;
-        padding-top: 1.5vh;
-        margin-left: auto;
-        margin-right: auto;
-    }
+
     ion-avatar {
         width:70px;
         height: 70px;
         margin-top: 2vh;
+    }
+    .title {
+        font-size: 1.8em;
+        line-height: 3.5vh;
         margin-left: auto;
         margin-right: auto;
-        border: solid black 3px;
-        box-shadow: 4px 4px 0px black;
     }
+
     .conv-container {
-        margin: 3%;
-        min-height: 75vh;
+        margin: 2.5%;
+        height: 73vh;
         background-color: var(--ion-color-brutLight);
         border: solid black 3px;
         border-radius: 10px;
         box-shadow: 4px 4px 0px black;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
+
     ion-footer {
         background-color: var(--ion-color-brutYellow);
         border-top: solid black 4px;
-    }
-    ion-input {
-        --background: var(--ion-color-brutLight);
-        --padding-start:1vw;
-        font-family: 'Dongle', sans-serif;
-        height: 40px;
-        border: 4px solid black;
-        box-shadow: 7px 7px 0px black;
-        margin-bottom: 1.5vh;
-        font-size: 1.5em;
-        color: black;
     }
     .send {
         width: 10vw;

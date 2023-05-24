@@ -1,0 +1,133 @@
+.title {
+    color: #000000;
+    text-align: center;
+    font-family: BUNGEE;
+    font-size: 2.2em;
+}
+  
+.form {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+  
+ion-label {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Dongle', sans-serif;
+    line-height: 0px;
+}
+  
+ion-input {
+    background-color: var(--ion-color-brutLight);
+    --padding-start:1vw;
+    height: 40px;
+    border: 4px solid black;
+    box-shadow: 7px 7px 0px black;
+    margin-bottom: 1.5vh;
+    font-size: 1.2em;
+    color: black;
+}
+  
+.button {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    height: 17vh;
+    margin-top: 4vh;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+  
+  .button ion-button {
+    --border-radius: 10px;
+    --border-color: #000000;
+    --border-style: solid;
+    --border-width: 5px;
+    --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
+    max-height: 6.5vh;
+    font-family: 'Dongle', sans-serif;
+    line-height: 0px;
+    font-size: 2.2em;
+    margin-top: 1vh;
+    font-weight: normal;
+  }
+  
+  ion-button.main {
+    --background: var(--ion-color-brutRed);
+    --background-hover: #9ce0be;
+    --background-activated: #88f4be;
+    --background-focused: #88f4be;
+    --color: #FFFFFF;
+  }
+  
+  ion-button.accessory {
+    --background: var(--ion-color-brutLight);
+    --background-hover: #9ce0be;
+    --background-activated: #88f4be;
+    --background-focused: #88f4be;
+    --color: #000000;
+  }
+  
+  .successMsg {
+    color: rgb(62, 118, 87);
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+  }
+  
+  .noUnderline {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  .return {
+    padding-top: 2.5vh;
+  }
+  
+  ion-textarea {
+    background-color: var(--ion-color-brutLight);
+    --padding-start:1vw;
+    font-family: 'Dongle', sans-serif;
+    max-height: 80px;
+    border: 4px solid black;
+    box-shadow: 7px 7px 0px black;
+    margin-bottom: 1.5vh;
+    font-size: 1.5em;
+    line-height: 2vh;
+    color: black;
+  }
+  ion-select {
+    background-color: var(--ion-color-brutLight);
+    --padding-start:1vw;
+    width: 100%;
+    height: 40px;
+    border: 4px solid black;
+    box-shadow: 7px 7px 0px black;
+    margin-bottom: 1.5vh;
+    font-size: 1.2em;
+    color: black;
+  }
+  
+  h2 {
+    font-size: 2.2em;
+    line-height: 0;
+  }
+
+ion-grid {
+    line-height: 30px;
+    width: 100%;
+}
+
+ion-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-avatar {
+    margin-left: auto;
+    margin-right: auto;
+    border: solid black 5px;
+    box-shadow: 7px 7px 0px black;
+}

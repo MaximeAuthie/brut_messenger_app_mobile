@@ -49,14 +49,12 @@
         height: 6vh;
         width: 6vh;
         border: solid black 3px;
+        margin-left: 0;
+        margin-right: 0;
     }
     img.go {
         height: 4vh;
         width: 4vh;
-    }
-    h2 {
-        font-size: 2.2em;
-        line-height: 0;
     }
 
 </style>

@@ -15,10 +15,10 @@
             </ion-grid>
 
             <div class="button">
-                <router-link to="/new-conversation" class="no-underline">
+                <router-link to="/new-conversation" class="noUnderline">
                     <ion-button class="main" expand="block">Nouvelle conversation</ion-button>
                 </router-link>
-                <router-link to="/new-group" class="no-underline">
+                <router-link to="/new-group" class="noUnderline">
                     <ion-button class="main" expand="block">Nouveau groupe</ion-button>
                 </router-link>
             </div>
@@ -103,56 +103,15 @@
         padding: 10%;
     }
     .title {
-        color: #000000;
-        line-height: 0px;
-        text-align: center;
-        font-family: BUNGEE;
         font-size: 1.7em;
         line-height: 3.5vh;
         padding-top: 1.5vh;
     }
-    ion-col {
-        text-align: center;
-    }
+
     ion-avatar {
         width:90px;
         height: 90px;
         margin-top: 2vh;
-        margin-left: auto;
-        margin-right: auto;
-        border: solid black 5px;
-        box-shadow: 7px 7px 0px black;
     }
-    .button {
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-        margin-top: 2vh;
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-    ion-button {
-        --border-radius: 10px;
-        --border-color: #000000;
-        --border-style: solid;
-        --border-width: 5px;
-        --box-shadow: 7px 7px 0px 0 rgb(0, 0, 0, 1);
-        font-family: 'Dongle', sans-serif;
-        line-height: 0px;
-        max-height: 6.5vh;
-        font-size: 2.2em;
-        margin-top: 1vh;
-        font-weight: normal;
-    }
-    ion-button.main {
-        --background: var(--ion-color-brutRed);
-        --background-hover: #9ce0be;
-        --background-activated: #88f4be;
-        --background-focused: #88f4be;
-        --color: #FFFFFF;
-    }
-    .no-underline {
-        text-decoration: none;
-    }
-
+ 
 </style>

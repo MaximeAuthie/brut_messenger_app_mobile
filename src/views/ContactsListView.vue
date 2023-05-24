@@ -13,7 +13,7 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <div class="button">
+            <div class="buttonList">
                 <contact-button v-for="contact in contactsList" 
                     :key="contact.id"
                     :name="contact.name"
@@ -94,27 +94,21 @@
         padding: 10%;
     }
     .title {
-        color: #000000;
-        line-height: 0px;
-        text-align: center;
-        font-family: BUNGEE;
         font-size: 1.7em;
         line-height: 3.5vh;
         padding-top: 1.5vh;
     }
+
     ion-col {
         text-align: center;
     }
+
     ion-avatar {
         width:90px;
         height: 90px;
         margin-top: 2vh;
-        margin-left: auto;
-        margin-right: auto;
-        border: solid black 5px;
-        box-shadow: 7px 7px 0px black;
     }
-    .button {
+    .buttonList {
         display: flex;
         flex-direction: column;
         align-content: flex-start;
